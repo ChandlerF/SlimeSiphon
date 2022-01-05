@@ -14,6 +14,6 @@ public class AbilityManager : MonoBehaviour
 
     void Update()
     {
-        
+        //Have inputs here, calling AbilityOne function, etc
     }
 }

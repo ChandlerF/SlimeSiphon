@@ -2,34 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[RequireComponent(typeof(DamageOnCol), typeof(FlashWhite))]
 public class Charge : MonoBehaviour
 {
     private Rigidbody2D rb;
 
-    [SerializeField] private float DashForce = 80f;
+    [SerializeField] private float DashForce = 250f;
 
 
     private Vector3 MoveDir;
 
     private bool CanCharge = true;
 
-    [SerializeField] private bool IsOnPlayer = true;
+    public bool IsOnPlayer = true;
 
-/*
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawRay(transform.position, rb.velocity.normalized * 10);
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, MoveDir * 5);
-    }
-*/
+    [SerializeField] private FlashWhite FlashScript;
+
+    [SerializeField] private float WaitSecToDash = 0.3f;
+
+    private DamageOnCol ColScript;
+
+    /*
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawRay(transform.position, rb.velocity.normalized * 10);
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(transform.position, MoveDir * 5);
+        }
+    */
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        FlashScript = GetComponent<FlashWhite>();
+
+        ColScript = GetComponent<DamageOnCol>();
     }
 
 
@@ -72,6 +81,9 @@ public class Charge : MonoBehaviour
     {
         rb.constraints = RigidbodyConstraints2D.FreezePosition;
         Invoke("UnFreezePos", 1f);
+        FlashScript.Flash();
+
+        ColScript.CanDamage = true;
     }
 
     private void UnFreezePos()
@@ -86,7 +98,7 @@ public class Charge : MonoBehaviour
     {
         rb.AddForce(MoveDir * DashForce, ForceMode2D.Impulse);
 
-        Invoke("EnablePlayerMovement", 0.4f);
+        Invoke("EnablePlayerMovement", WaitSecToDash);
     }
 
     private void EnablePlayerMovement()
@@ -96,6 +108,7 @@ public class Charge : MonoBehaviour
             PlayerMovement.instance.CanMove = true;
         }
 
+        ColScript.CanDamage = false;
         CanCharge = true;
     }
 }

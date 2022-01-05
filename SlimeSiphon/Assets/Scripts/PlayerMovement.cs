@@ -17,9 +17,13 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float runSpeed = 20.0f;
 
-    void Start()
+    private void Awake()
     {
         instance = this;
+    }
+
+    void Start()
+    {
         rb = GetComponent<Rigidbody2D>();
     }
 

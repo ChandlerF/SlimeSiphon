@@ -219,13 +219,17 @@ GameObject:
   - component: {fileID: 535855958}
   - component: {fileID: 535855957}
   - component: {fileID: 535855961}
+  - component: {fileID: 535855962}
+  - component: {fileID: 535855963}
+  - component: {fileID: 535855964}
+  - component: {fileID: 535855965}
   m_Layer: 7
   m_Name: EnemySlime
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &535855957
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -350,8 +354,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b023784b57be7254492e8d5e45078fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DashForce: 80
+  DashForce: 250
   IsOnPlayer: 0
+  FlashScript: {fileID: 0}
+  WaitSecToDash: 0.3
+--- !u!114 &535855962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535855956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb4808419572184583926d3f4e5cc68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Duration: 0.45
+--- !u!114 &535855963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535855956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc8930c0c2341784cb306b22ee3f2c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 20
+  CurrentHealth: 0
+  KnockBackForce: 50
+--- !u!114 &535855964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535855956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 555c8823a513a054b956a73d123afe14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CanDamage: 0
+  IsOnPlayer: 0
+  Damage: 5
+--- !u!114 &535855965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535855956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe50866f212d134fae3765d1ed2cf2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Duration: 0.2
 --- !u!1 &968056232
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,6 +426,8 @@ GameObject:
   - component: {fileID: 968056234}
   - component: {fileID: 968056236}
   - component: {fileID: 968056233}
+  - component: {fileID: 968056238}
+  - component: {fileID: 968056237}
   m_Layer: 7
   m_Name: Wizard
   m_TagString: Enemy
@@ -483,6 +547,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &968056237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968056232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc8930c0c2341784cb306b22ee3f2c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 20
+  CurrentHealth: 0
+  KnockBackForce: 50
+--- !u!114 &968056238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968056232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe50866f212d134fae3765d1ed2cf2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Duration: 0.2
 --- !u!1 &1290378643
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,6 +590,10 @@ GameObject:
   - component: {fileID: 1290378644}
   - component: {fileID: 1290378648}
   - component: {fileID: 1290378649}
+  - component: {fileID: 1290378651}
+  - component: {fileID: 1290378652}
+  - component: {fileID: 1290378653}
+  - component: {fileID: 1290378654}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -599,7 +695,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1290378643}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -632,6 +728,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DashForce: 300
   IsOnPlayer: 1
+  FlashScript: {fileID: 0}
+  WaitSecToDash: 0.3
 --- !u!61 &1290378650
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -658,3 +756,59 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.75}
   m_EdgeRadius: 0
+--- !u!114 &1290378651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290378643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb4808419572184583926d3f4e5cc68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Duration: 0.45
+--- !u!114 &1290378652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290378643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc8930c0c2341784cb306b22ee3f2c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 100
+  CurrentHealth: 0
+  KnockBackForce: 50
+--- !u!114 &1290378653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290378643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 555c8823a513a054b956a73d123afe14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CanDamage: 0
+  IsOnPlayer: 0
+  Damage: 5
+--- !u!114 &1290378654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290378643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe50866f212d134fae3765d1ed2cf2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Duration: 0.2
