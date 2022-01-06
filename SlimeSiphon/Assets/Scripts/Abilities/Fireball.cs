@@ -12,7 +12,7 @@ public class Fireball : MonoBehaviour
     void Start()
     {
         IsOnPlayer = GetComponent<Health>().IsOnPlayer;
-        MoveDir = transform.right;
+        MoveDir = -transform.right;
     }
 
     void Update()

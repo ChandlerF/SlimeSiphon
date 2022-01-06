@@ -17,6 +17,7 @@ public class AbilityManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             AbilityOne.Invoke("Ability", 0f);
+            //Screenshake for every ability use?
         }
     }
 }
