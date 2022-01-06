@@ -14,7 +14,7 @@ public class Charge : MonoBehaviour
 
     private bool CanCharge = true;
 
-    public bool IsOnPlayer = true;
+    private bool IsOnPlayer = true;
 
     [SerializeField] private FlashWhite FlashScript;
 
@@ -36,15 +36,19 @@ public class Charge : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
         FlashScript = GetComponent<FlashWhite>();
 
         ColScript = GetComponent<DamageOnCol>();
+
+        IsOnPlayer = GetComponent<Health>().IsOnPlayer;
     }
 
 
-    void Update()
+
+    public void Ability()
     {
-        if (Input.GetMouseButtonDown(0) && CanCharge)
+        if (CanCharge)
         {
             MoveDir = rb.velocity.normalized;
 
@@ -57,7 +61,6 @@ public class Charge : MonoBehaviour
             ChargeFunc();
         }
     }
-
 
     private void ChargeFunc()
     {
@@ -90,6 +93,8 @@ public class Charge : MonoBehaviour
     {
         rb.constraints = RigidbodyConstraints2D.None;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+        transform.rotation = Quaternion.identity;
 
         Dash();
     }

@@ -5,14 +5,14 @@ using UnityEngine;
 public class DamageOnCol : MonoBehaviour
 {
     public bool CanDamage = false;
-    [SerializeField] private bool IsOnPlayer = false;
+    private bool IsOnPlayer = false;
 
     [SerializeField] private float Damage = 5f;
     private string TagTarget;
 
     void Start()
     {   
-        IsOnPlayer = GetComponent<Charge>().IsOnPlayer;
+        IsOnPlayer = GetComponent<Health>().IsOnPlayer;
         CheckIfOnPlayer();
     }
 

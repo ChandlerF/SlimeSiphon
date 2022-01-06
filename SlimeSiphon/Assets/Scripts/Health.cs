@@ -10,6 +10,8 @@ public class Health : MonoBehaviour
     private FlashRed RedFlashScript;
     private Rigidbody2D rb;
 
+    public bool IsOnPlayer = false;
+
     void Start()
     {
         CurrentHealth = MaxHealth;
@@ -30,6 +32,12 @@ public class Health : MonoBehaviour
         RedFlashScript.Flash();
 
         KnockBack(go);
+
+
+        if (IsOnPlayer)
+        {
+            //ScreenShake
+        }
     }
 
 

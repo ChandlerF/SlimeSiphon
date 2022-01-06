@@ -14,6 +14,9 @@ public class AbilityManager : MonoBehaviour
 
     void Update()
     {
-        //Have inputs here, calling AbilityOne function, etc
+        if (Input.GetMouseButtonDown(0))
+        {
+            AbilityOne.Invoke("Ability", 0f);
+        }
     }
 }
