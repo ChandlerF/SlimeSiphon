@@ -14,6 +14,8 @@ public class Health : MonoBehaviour
 
     public bool IsOnPlayer = false;
 
+    [SerializeField] private MonoBehaviour Script;
+
     //Particle, and a color to set in inspector, so it looks like bits break off the person when damaged
 
     void Start()
@@ -33,7 +35,10 @@ public class Health : MonoBehaviour
             if (CurrentHealth <= 0)
             {
                 Death();
+                return;
             }
+
+            Script.Invoke("TakenDamage", 0f);
 
             RedFlashScript.Flash();
 
@@ -42,15 +47,15 @@ public class Health : MonoBehaviour
             IsInvincible = true;
             Invoke("MakeMortal", 0.4f);
 
-
-            if (IsOnPlayer)
+            /*
+            if (IsOnPlayer)     //TakenDamage() is on every Player/Enemy
             {
                 //ScreenShake for being damaged
             }
             else
             {
                 //for doing damage
-            }
+            }*/
         }
     }
 

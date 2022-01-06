@@ -73,6 +73,11 @@ public class EnemySlime : MonoBehaviour
         }
     }
 
+    public void TakenDamage()
+    {
+        Retreat();
+    }
+
 
     private void OnTriggerEnter2D(Collider2D col)
     {

@@ -55,7 +55,7 @@ public class Wizard : MonoBehaviour
 
             if (ShootTimer <= 0 && CanShoot)
             {
-                FireBall.Ability();
+                FireBall.Ability(Target.transform.position);
 
                 ShootTimer = StartShootTimer;
             }
@@ -73,6 +73,13 @@ public class Wizard : MonoBehaviour
             rb.AddForce(MoveDir * MoveSpeed);
         }
     }
+
+
+    public void TakenDamage()
+    {
+        ShootTimer = StartShootTimer;
+    }
+
 
 
     private void OnTriggerEnter2D(Collider2D col)

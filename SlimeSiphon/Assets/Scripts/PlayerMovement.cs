@@ -53,4 +53,12 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+
+    public void TakenDamage()
+    {
+        //Screenshake
+        //Freeze Frame
+        //Sound FX
+    }
 }
