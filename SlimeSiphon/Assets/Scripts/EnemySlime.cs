@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class EnemySlime : MonoBehaviour
 {
-    private bool Aggro = false;
     private GameObject Player;
-    [SerializeField] private float MoveSpeed = 50f;
+    [SerializeField] private float MoveSpeed = 140f;
     private Rigidbody2D rb;
     private Vector3 MoveDir;
     [SerializeField] private float AttackRange = 20f;
@@ -36,7 +35,6 @@ public class EnemySlime : MonoBehaviour
 
             Vector3 direction = Player.transform.position - transform.position;
 
-
             MoveDir = direction.normalized;
 
 
@@ -44,20 +42,33 @@ public class EnemySlime : MonoBehaviour
             {
                 //Attack
                 ChargeScript.Ability();
+
+                //Set state to retreat, after seconds
+                Invoke("Retreat", 1.2f);
+            }
+        }
+        else if(state == State.Retreat)
+        {
+            MoveDir = Vector3.zero;
+
+            Vector3 direction = Player.transform.position - transform.position;
+
+
+
+            if (direction.sqrMagnitude < AttackRange * 1.5f)
+            {
+                MoveDir = -direction.normalized;
+            }
+            else
+            {
+                state = State.Aggro;
             }
         }
     }
     void FixedUpdate()
     {
-        if (state == State.Aggro)
+        if (state == State.Aggro || state == State.Retreat)
         {
-            //Chase
-            //If in range, attack
-            //Then retreat
-            //Repeat
-
-            //transform.position = Vector2.MoveTowards(transform.position, Player.transform.position, MoveSpeed);
-
             rb.AddForce(MoveDir * MoveSpeed);
         }
     }
@@ -69,7 +80,13 @@ public class EnemySlime : MonoBehaviour
         {
             Player = col.gameObject;
 
-            Aggro = true;
+            state = State.Aggro;
         }
+    }
+
+
+    private void Retreat()
+    {
+        state = State.Retreat;
     }
 }

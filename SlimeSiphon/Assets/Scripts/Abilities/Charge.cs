@@ -82,15 +82,15 @@ public class Charge : MonoBehaviour
 
     private void FreezePos()
     {
-        rb.constraints = RigidbodyConstraints2D.FreezePosition;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
         Invoke("UnFreezePos", 1f);
         FlashScript.Flash();
-
-        ColScript.CanDamage = true;
     }
 
     private void UnFreezePos()
     {
+        ColScript.CanDamage = true;
+
         rb.constraints = RigidbodyConstraints2D.None;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 

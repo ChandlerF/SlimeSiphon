@@ -10,7 +10,11 @@ public class Health : MonoBehaviour
     private FlashRed RedFlashScript;
     private Rigidbody2D rb;
 
+    private bool IsInvincible = false;
+
     public bool IsOnPlayer = false;
+
+    //Particle, and a color to set in inspector, so it looks like bits break off the person when damaged
 
     void Start()
     {
@@ -22,21 +26,31 @@ public class Health : MonoBehaviour
 
     public void Damage(float dmg, GameObject go)
     {
-        CurrentHealth -= dmg;
-
-        if(CurrentHealth <= 0)
+        if (!IsInvincible)
         {
-            Death();
-        }
+            CurrentHealth -= dmg;
 
-        RedFlashScript.Flash();
+            if (CurrentHealth <= 0)
+            {
+                Death();
+            }
 
-        KnockBack(go);
+            RedFlashScript.Flash();
+
+            KnockBack(go);
+
+            IsInvincible = true;
+            Invoke("MakeMortal", 0.4f);
 
 
-        if (IsOnPlayer)
-        {
-            //ScreenShake
+            if (IsOnPlayer)
+            {
+                //ScreenShake for being damaged
+            }
+            else
+            {
+                //for doing damage
+            }
         }
     }
 
@@ -52,5 +66,11 @@ public class Health : MonoBehaviour
         Vector3 MoveDir = transform.position - go.transform.position;
 
         rb.AddForce(MoveDir * KnockBackForce, ForceMode2D.Impulse);
+    }
+
+
+    private void MakeMortal()
+    {
+        IsInvincible = false;
     }
 }
