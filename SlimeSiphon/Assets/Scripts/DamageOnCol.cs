@@ -10,6 +10,8 @@ public class DamageOnCol : MonoBehaviour
     [SerializeField] private float Damage = 5f;
     private string TagTarget;
 
+    [SerializeField] private bool KillOnCol = false;
+
     void Start()
     {   
         IsOnPlayer = GetComponent<Health>().IsOnPlayer;
@@ -22,6 +24,11 @@ public class DamageOnCol : MonoBehaviour
         if (col.transform.CompareTag(TagTarget) && CanDamage)
         {
             ApplyDamage(col.gameObject);
+
+            if (KillOnCol)
+            {
+                GetComponent<Health>().Death();
+            }
         }
     }
 

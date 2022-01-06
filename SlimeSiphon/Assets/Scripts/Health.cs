@@ -55,8 +55,10 @@ public class Health : MonoBehaviour
     }
 
 
-    private void Death()
+    public void Death()
     {
+        //Particles
+        //ScreenShake
         Destroy(gameObject);
     }
 

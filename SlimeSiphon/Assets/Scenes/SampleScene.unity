@@ -383,6 +383,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14765239554d07242a31b1fa13d45182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FireBall: {fileID: 4223431891412979305, guid: 7b4bbabe9970d064eb18e918cff24712, type: 3}
+  Force: 20
 --- !u!114 &968056240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,7 +400,7 @@ MonoBehaviour:
   MoveSpeed: 140
   StopDistance: 70
   RetreatDistance: 35
-  StartShootTimer: 1.8
+  StartShootTimer: 2
 --- !u!58 &968056241
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Fireball : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private GameObject FireBall;
+    private bool IsOnPlayer = true;
+    [SerializeField] private float Force;
+    private Vector3 MoveDir;
+
     void Start()
     {
-        
+        IsOnPlayer = GetComponent<Health>().IsOnPlayer;
+        MoveDir = transform.right;
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -21,11 +25,16 @@ public class Fireball : MonoBehaviour
     public void Ability()
     {
         //Get Dir   from Mouse      and         Velocity? or target the player directly
-        //Spawn fireball
-        //Add force
-        //Set fireball script to target "enemy" or "player"
-        //Ability cooldown?
 
-        Debug.Log("Shoot");
+        //Quaternion newRotation = 
+        GameObject SpawnedFB = Instantiate(FireBall, transform.position, Quaternion.identity);
+
+        if (IsOnPlayer)
+        {
+            SpawnedFB.GetComponent<Health>().IsOnPlayer = IsOnPlayer;
+            SpawnedFB.layer = 8;  //Player Layer
+        }
+
+        SpawnedFB.GetComponent<Rigidbody2D>().AddForce(MoveDir * Force, ForceMode2D.Impulse);
     }
 }
