@@ -11,11 +11,17 @@ public class AbilityManager : MonoBehaviour
 
     private bool CanUseOne = false, CanUseTwo = false;
 
+    private bool TouchingBody = false;
+
+    private GameObject InteractText;
+
     void Start()
     {
         TimerOne = StartTimerOne;
 
         TimerTwo = StartTimerTwo;
+
+        InteractText = transform.GetChild(0).gameObject;
     }
 
 
@@ -36,10 +42,14 @@ public class AbilityManager : MonoBehaviour
 
             CanUseTwo = false;
         }
+        else if (Input.GetKeyDown(KeyCode.F) && TouchingBody)
+        {
+            Debug.Log("My Ability");
+        }
 
 
 
-        if(TimerOne > 0 && CanUseOne == false)
+        if (TimerOne > 0 && CanUseOne == false)
         {
             TimerOne -= Time.deltaTime;
         }
@@ -67,9 +77,19 @@ public class AbilityManager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if(col.transform.CompareTag("Dead"))
+        if (col.transform.CompareTag("Dead"))
         {
-            //Popup "F to interact"     Have that UI on Player or every enemy and just enable it  -  Or, spawn the gameobject with that
+            InteractText.SetActive(true);
+            TouchingBody = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.transform.CompareTag("Dead"))
+        {
+            InteractText.SetActive(false);
+            TouchingBody = false;
         }
     }
 }

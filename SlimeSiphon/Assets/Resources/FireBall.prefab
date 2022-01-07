@@ -152,8 +152,11 @@ MonoBehaviour:
   KnockBackForce: 0
   StartMoveSpeed: 120
   MoveSpeed: 0
+  IsInvincible: 1
   IsOnPlayer: 0
-  Script: {fileID: 0}
+  IsAlive: 1
+  MovementScript: {fileID: 0}
+  AbilityScript: {fileID: 0}
 --- !u!114 &4223431891412979304
 MonoBehaviour:
   m_ObjectHideFlags: 0

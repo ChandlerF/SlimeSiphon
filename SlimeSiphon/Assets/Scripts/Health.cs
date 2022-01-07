@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
     private FlashColor FlashColorScript;
     private Rigidbody2D rb;
 
-    private bool IsInvincible = false;
+    [SerializeField] private bool IsInvincible = false;
 
     public bool IsOnPlayer = false;
 
