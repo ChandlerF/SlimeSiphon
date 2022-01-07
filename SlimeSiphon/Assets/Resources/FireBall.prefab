@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 4223431891412979301}
   - component: {fileID: 4223431891412979302}
   - component: {fileID: 4223431891412979303}
-  - component: {fileID: 4223431891412979306}
   - component: {fileID: 4223431891412979307}
   - component: {fileID: 4223431891412979304}
   - component: {fileID: 4324636366688159367}
+  - component: {fileID: 7414226484483460535}
   m_Layer: 9
   m_Name: FireBall
   m_TagString: Enemy
@@ -135,19 +135,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &4223431891412979306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4223431891412979305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbe50866f212d134fae3765d1ed2cf2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Duration: 0
 --- !u!114 &4223431891412979307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +150,10 @@ MonoBehaviour:
   MaxHealth: 1
   CurrentHealth: 0
   KnockBackForce: 0
+  StartMoveSpeed: 120
+  MoveSpeed: 0
   IsOnPlayer: 0
+  Script: {fileID: 0}
 --- !u!114 &4223431891412979304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,3 +182,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Time: 3
+--- !u!114 &7414226484483460535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4223431891412979305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc5dea0c0dcbc86429020cd873a4a049, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RedDuration: 0.2
+  WhiteDuration: 0.2
+  GreenDuration: 0.2

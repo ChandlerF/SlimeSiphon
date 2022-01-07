@@ -15,12 +15,14 @@ public class PlayerMovement : MonoBehaviour
     //Limits diagnol movement
     private float moveLimiter = 0.7f;
 
-    [SerializeField] private float runSpeed = 20.0f;
+    private float runSpeed;
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        runSpeed = GetComponent<Health>().MoveSpeed;
     }
 
     void Update()
@@ -43,9 +45,10 @@ public class PlayerMovement : MonoBehaviour
 
             Vector2 newVel = new Vector2(horizontal * runSpeed, vertical * runSpeed);
 
-            if (newVel != Vector2.zero)     //Problem where this overrides the dash movement, make this a singleton, and so you can't move until it's done
+            if (newVel != Vector2.zero)
             {
-                rb.velocity = newVel;
+                //rb.velocity = newVel;
+                rb.AddForce(newVel);
             }
         }
     }
@@ -56,6 +59,8 @@ public class PlayerMovement : MonoBehaviour
         //Screenshake
         //Freeze Frame
         //Sound FX
+
+         runSpeed = GetComponent<Health>().MoveSpeed;
     }
 
     public void StopMovement()

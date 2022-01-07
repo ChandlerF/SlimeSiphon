@@ -26,6 +26,8 @@ public class EnemySlime : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         ChargeScript = GetComponent<Charge>();
+
+        MoveSpeed = GetComponent<Health>().MoveSpeed;
     }
 
     private void Update()
@@ -79,7 +81,14 @@ public class EnemySlime : MonoBehaviour
 
     public void TakenDamage()
     {
-        Retreat();
+        if(state != State.Aggro)
+        {
+            Player = GameObject.FindGameObjectWithTag("Player");
+
+            state = State.Aggro;
+        }
+
+        MoveSpeed = GetComponent<Health>().MoveSpeed;
     }
 
 
@@ -94,7 +103,6 @@ public class EnemySlime : MonoBehaviour
             state = State.Aggro;
         }
     }
-
 
     private void Retreat()
     {

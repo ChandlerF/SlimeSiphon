@@ -14,12 +14,11 @@ GameObject:
   - component: {fileID: 2148379853846648078}
   - component: {fileID: 2148379853846648068}
   - component: {fileID: 2148379853846648066}
-  - component: {fileID: 2148379853846648065}
   - component: {fileID: 2148379853846648064}
   - component: {fileID: 2148379853846648071}
-  - component: {fileID: 2148379853846648070}
   - component: {fileID: 2148379853846648069}
   - component: {fileID: 6593640781543238559}
+  - component: {fileID: 7867348251979984934}
   m_Layer: 7
   m_Name: EnemySlime
   m_TagString: Enemy
@@ -151,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8233a66e48488e0458a8940a7cb22b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 140
+  MoveSpeed: 180
   AttackRange: 20
   CanMove: 1
 --- !u!114 &2148379853846648066
@@ -167,22 +166,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DashForce: 180
-  FlashScript: {fileID: 0}
+  FlashColorScript: {fileID: 0}
   WaitSecToDash: 0.3
   Player: {fileID: 0}
---- !u!114 &2148379853846648065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2148379853846648079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddb4808419572184583926d3f4e5cc68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Duration: 0.45
 --- !u!114 &2148379853846648064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,6 +184,8 @@ MonoBehaviour:
   MaxHealth: 20
   CurrentHealth: 0
   KnockBackForce: 75
+  StartMoveSpeed: 180
+  MoveSpeed: 0
   IsOnPlayer: 0
   Script: {fileID: 2148379853846648068}
 --- !u!114 &2148379853846648071
@@ -215,19 +203,6 @@ MonoBehaviour:
   CanDamage: 0
   Damage: 5
   KillOnCol: 0
---- !u!114 &2148379853846648070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2148379853846648079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbe50866f212d134fae3765d1ed2cf2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Duration: 0.2
 --- !u!58 &2148379853846648069
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -256,3 +231,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7823d5f5d1bb06428786fc49e6e4a96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7867348251979984934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2148379853846648079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc5dea0c0dcbc86429020cd873a4a049, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RedDuration: 0.2
+  WhiteDuration: 0.2
+  GreenDuration: 0.2

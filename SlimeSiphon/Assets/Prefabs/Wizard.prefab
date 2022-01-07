@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 7095007908933400341}
   - component: {fileID: 7095007908933400336}
   - component: {fileID: 7095007908933400328}
-  - component: {fileID: 7095007908933400343}
   - component: {fileID: 7095007908933400340}
   - component: {fileID: 7095007908933400329}
   - component: {fileID: 7095007908933400342}
+  - component: {fileID: 4348028553732597039}
   m_Layer: 7
   m_Name: Wizard
   m_TagString: Enemy
@@ -152,19 +152,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 9
---- !u!114 &7095007908933400343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7095007908933400337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbe50866f212d134fae3765d1ed2cf2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Duration: 0.2
 --- !u!114 &7095007908933400340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,6 +167,8 @@ MonoBehaviour:
   MaxHealth: 20
   CurrentHealth: 0
   KnockBackForce: 75
+  StartMoveSpeed: 160
+  MoveSpeed: 0
   IsOnPlayer: 0
   Script: {fileID: 7095007908933400329}
 --- !u!114 &7095007908933400329
@@ -194,7 +183,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 308c2099e2292a243b87b34b61632610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 140
   StopDistance: 70
   RetreatDistance: 35
   StartShootTimer: 2.5
@@ -210,5 +198,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14765239554d07242a31b1fa13d45182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireBall: {fileID: 4223431891412979305, guid: 7b4bbabe9970d064eb18e918cff24712, type: 3}
   Force: 20
+  Target: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: 0, z: 0}
+  mousePos: {x: 0, y: 0, z: 0}
+--- !u!114 &4348028553732597039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7095007908933400337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc5dea0c0dcbc86429020cd873a4a049, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RedDuration: 0.2
+  WhiteDuration: 0.2
+  GreenDuration: 0.2

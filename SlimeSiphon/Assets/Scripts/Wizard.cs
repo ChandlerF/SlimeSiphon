@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Wizard : MonoBehaviour
 {
-    private GameObject Target;
-    [SerializeField] private float MoveSpeed, StopDistance, RetreatDistance;
-    [SerializeField] private float StartShootTimer;
-    private float ShootTimer;
+    private GameObject Player;
+    [SerializeField] private float StopDistance, RetreatDistance, StartShootTimer;
+    private float MoveSpeed, ShootTimer;
     private bool Aggro = false, CanShoot = false;
     private Vector3 MoveDir;
     private Rigidbody2D rb;
@@ -21,6 +20,7 @@ public class Wizard : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         ShootTimer = StartShootTimer;
+        MoveSpeed = GetComponent<Health>().MoveSpeed;
     }
 
 
@@ -30,7 +30,7 @@ public class Wizard : MonoBehaviour
         {
             MoveDir = Vector3.zero;
 
-            Vector3 direction = Target.transform.position - transform.position;
+            Vector3 direction = Player.transform.position - transform.position;
 
 
             //If too close
@@ -55,7 +55,12 @@ public class Wizard : MonoBehaviour
 
             if (ShootTimer <= 0 && CanShoot)
             {
-                FireBall.Ability(Target.transform.position);
+                FireBall.Player = Player;
+                FireBall.Ability();
+
+
+
+
 
                 ShootTimer = StartShootTimer;
             }
@@ -78,15 +83,22 @@ public class Wizard : MonoBehaviour
     public void TakenDamage()
     {
         ShootTimer = StartShootTimer;
-    }
+        if (!Aggro)
+        {
+            Player = GameObject.FindGameObjectWithTag("Player");
 
+            Aggro = true;
+        }
+
+        MoveSpeed = GetComponent<Health>().MoveSpeed;
+    }
 
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Player"))
         {
-            Target = col.gameObject;
+            Player = col.gameObject;
             Aggro = true;
         }
     }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(DamageOnCol), typeof(FlashWhite))]
+[RequireComponent(typeof(DamageOnCol), typeof(FlashColor))]
 public class Charge : MonoBehaviour
 {
     private Rigidbody2D rb;
@@ -16,7 +16,7 @@ public class Charge : MonoBehaviour
 
     private bool IsOnPlayer = true;
 
-    [SerializeField] private FlashWhite FlashScript;
+    [SerializeField] private FlashColor FlashColorScript;
 
     [SerializeField] private float WaitSecToDash = 0.3f;
 
@@ -41,7 +41,7 @@ public class Charge : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        FlashScript = GetComponent<FlashWhite>();
+        FlashColorScript = GetComponent<FlashColor>();
 
         ColScript = GetComponent<DamageOnCol>();
 
@@ -90,8 +90,8 @@ public class Charge : MonoBehaviour
 
     private void FreezePos()
     {
-        Invoke("UnFreezePos", 1f);
-        FlashScript.Flash();
+        Invoke("UnFreezePos", 0.5f);
+        FlashColorScript.FlashWhite();
     }
 
     private void UnFreezePos()
