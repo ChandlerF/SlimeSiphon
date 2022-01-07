@@ -59,15 +59,15 @@ public class Charge : MonoBehaviour
             if (IsOnPlayer)
             {
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                direction = mousePos - transform.position;
+                direction = (Vector2)mousePos - (Vector2)transform.position;
             }
             else
             {
-                direction = Player.transform.position - transform.position;
+                direction = (Vector2)Player.transform.position - (Vector2)transform.position;
             }
 
-            //float distance = direction.magnitude;
-            MoveDir = direction.normalized;
+            float distance = direction.magnitude;
+            MoveDir = direction / distance;
 
             ChargeFunc();
         }
