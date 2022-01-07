@@ -10,6 +10,7 @@ public class EnemySlime : MonoBehaviour
     private Vector3 MoveDir;
     [SerializeField] private float AttackRange = 20f;
     private Charge ChargeScript;
+    public bool CanMove = true;
 
     private enum State
     {
@@ -67,9 +68,12 @@ public class EnemySlime : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (state == State.Aggro || state == State.Retreat)
+        if (CanMove)
         {
-            rb.AddForce(MoveDir * MoveSpeed);
+            if (state == State.Aggro || state == State.Retreat)
+            {
+                rb.AddForce(MoveDir * MoveSpeed);
+            }
         }
     }
 
@@ -85,6 +89,8 @@ public class EnemySlime : MonoBehaviour
         {
             Player = col.gameObject;
 
+            ChargeScript.Player = Player;
+
             state = State.Aggro;
         }
     }
@@ -93,5 +99,14 @@ public class EnemySlime : MonoBehaviour
     private void Retreat()
     {
         state = State.Retreat;
+    }
+
+    public void StopMovement()
+    {
+        CanMove = false;
+    }
+    public void AllowMovement()
+    {
+        CanMove = true;
     }
 }

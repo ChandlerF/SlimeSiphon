@@ -14,7 +14,7 @@ public class Health : MonoBehaviour
 
     public bool IsOnPlayer = false;
 
-    [SerializeField] private MonoBehaviour Script;
+    public MonoBehaviour Script;
 
     //Particle, and a color to set in inspector, so it looks like bits break off the person when damaged
 

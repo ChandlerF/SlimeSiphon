@@ -153,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 140
   AttackRange: 20
+  CanMove: 1
 --- !u!114 &2148379853846648066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +169,8 @@ MonoBehaviour:
   DashForce: 180
   FlashScript: {fileID: 0}
   WaitSecToDash: 0.3
+  Player: {fileID: 0}
+  MovementScript: {fileID: 2148379853846648068}
 --- !u!114 &2148379853846648065
 MonoBehaviour:
   m_ObjectHideFlags: 0

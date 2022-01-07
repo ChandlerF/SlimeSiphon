@@ -61,4 +61,13 @@ public class PlayerMovement : MonoBehaviour
         //Freeze Frame
         //Sound FX
     }
+
+    public void StopMovement()
+    {
+        CanMove = false;
+    }
+    public void AllowMovement()
+    {
+        CanMove = true;
+    }
 }
