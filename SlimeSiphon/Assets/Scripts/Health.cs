@@ -16,7 +16,12 @@ public class Health : MonoBehaviour
 
     public bool IsOnPlayer = false;
 
-    public MonoBehaviour Script;
+    public bool IsAlive = true;
+
+    private GameObject PopupText;
+
+    public MonoBehaviour MovementScript, AbilityScript;
+
 
     //Particle, and a color to set in inspector, so it looks like bits break off the person when damaged
 
@@ -30,27 +35,31 @@ public class Health : MonoBehaviour
         CurrentHealth = MaxHealth;
         FlashColorScript = GetComponent<FlashColor>();
         rb = GetComponent<Rigidbody2D>();
+        PopupText = Resources.Load("FloatingParent", typeof(GameObject)) as GameObject;
     }
 
     public void Heal(int hp)
     {
-        float dif = MaxHealth - CurrentHealth;
-
-        if(hp > dif)
+        if (IsAlive)
         {
-            CurrentHealth += dif;
-        }
-        else
-        {
-            CurrentHealth += hp;
-        }
+            float dif = MaxHealth - CurrentHealth;
 
-        FlashColorScript.FlashGreen();
-        SetSpeed();
+            if (hp > dif)
+            {
+                CurrentHealth += dif;
+            }
+            else
+            {
+                CurrentHealth += hp;
+            }
 
-        if (IsOnPlayer)
-        {
-            GetComponent<PlayerMovement>().MoveSpeed = MoveSpeed;
+            FlashColorScript.FlashGreen();
+            SetSpeed();
+
+            if (IsOnPlayer)
+            {
+                GetComponent<PlayerMovement>().MoveSpeed = MoveSpeed;
+            }
         }
     }
 
@@ -59,10 +68,24 @@ public class Health : MonoBehaviour
 
     public void Damage(float dmg, Vector3 pos)
     {
-        if (!IsInvincible)
+        if (!IsInvincible && IsAlive)
         {
             CurrentHealth -= dmg;
 
+
+            GameObject SpawnedText = Instantiate(PopupText, transform.position, Quaternion.identity);
+            SpawnedText.GetComponent<PopupText>().Text.text = "-" + dmg.ToString();
+            if (IsOnPlayer)
+            {
+                SpawnedText.GetComponent<PopupText>().Text.color = Color.red;
+            }
+
+
+
+
+            FlashColorScript.FlashRed();
+
+            Knockback(pos, 1f);
             if (CurrentHealth <= 0)
             {
                 Death();
@@ -71,11 +94,7 @@ public class Health : MonoBehaviour
 
             SetSpeed();
 
-            Script.Invoke("TakenDamage", 0f);
-
-            FlashColorScript.FlashRed();
-
-            Knockback(pos, 1f);
+            MovementScript.Invoke("TakenDamage", 0f);
 
             IsInvincible = true;
             Invoke("MakeMortal", 0.4f);
@@ -97,7 +116,14 @@ public class Health : MonoBehaviour
     {
         //Particles
         //ScreenShake
-        Destroy(gameObject);
+        //Destroy(gameObject);
+
+        IsAlive = false;
+        GetComponent<Rigidbody2D>().mass *= 6;
+        Destroy(MovementScript);
+        AbilityScript.enabled = false;
+        transform.tag = "Dead";
+        gameObject.layer = 11;  //Dead
     }
 
 

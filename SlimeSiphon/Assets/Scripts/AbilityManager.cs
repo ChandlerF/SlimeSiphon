@@ -59,4 +59,17 @@ public class AbilityManager : MonoBehaviour
             CanUseTwo = true;
         }
     }
+
+
+
+
+
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if(col.transform.CompareTag("Dead"))
+        {
+            //Popup "F to interact"     Have that UI on Player or every enemy and just enable it  -  Or, spawn the gameobject with that
+        }
+    }
 }

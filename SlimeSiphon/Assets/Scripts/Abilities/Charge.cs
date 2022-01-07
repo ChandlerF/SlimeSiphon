@@ -75,7 +75,7 @@ public class Charge : MonoBehaviour
 
     private void ChargeFunc()
     {
-        HealthScript.Script.Invoke("StopMovement", 0f);
+        HealthScript.MovementScript.Invoke("StopMovement", 0f);
 
         CanCharge = false;
 
@@ -110,10 +110,13 @@ public class Charge : MonoBehaviour
 
     private void EnablePlayerMovement()
     {
-        HealthScript.Script.Invoke("AllowMovement", 0f);
-
         ColScript.CanDamage = false;
-        CanCharge = true;
+
+        if (HealthScript.IsAlive)
+        {
+            HealthScript.MovementScript.Invoke("AllowMovement", 0f);
+            CanCharge = true;
+        }
     }
 }
 

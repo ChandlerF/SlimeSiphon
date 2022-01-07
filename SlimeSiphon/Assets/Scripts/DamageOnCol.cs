@@ -29,7 +29,8 @@ public class DamageOnCol : MonoBehaviour
 
             if (KillOnCol)
             {
-                GetComponent<Health>().Death();
+                Destroy(gameObject);
+                //GetComponent<Health>().Death();
             }
         }
     }

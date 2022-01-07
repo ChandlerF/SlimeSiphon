@@ -22,7 +22,7 @@ public class FlashColor : MonoBehaviour
 
     public void FlashRed()
     {
-        if (RedFlashRoutine != null)        //Then, finish Health Heal() function       -       Dead bodies     -       Health potions (for bosses?)
+        if (RedFlashRoutine != null)
         {
             StopCoroutine(RedFlashRoutine);
         }
