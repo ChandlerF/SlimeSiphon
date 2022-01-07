@@ -75,12 +75,9 @@ public class Charge : MonoBehaviour
 
     private void ChargeFunc()
     {
-        CanCharge = false;
+        HealthScript.Script.Invoke("StopMovement", 0f);
 
-        if (IsOnPlayer)
-        {
-            PlayerMovement.instance.CanMove = false;
-        }
+        CanCharge = false;
 
         FreezePos();
 
@@ -93,7 +90,6 @@ public class Charge : MonoBehaviour
 
     private void FreezePos()
     {
-        HealthScript.Script.Invoke("StopMovement", 0f);
         Invoke("UnFreezePos", 1f);
         FlashScript.Flash();
     }
@@ -101,8 +97,6 @@ public class Charge : MonoBehaviour
     private void UnFreezePos()
     {
         ColScript.CanDamage = true;
-
-        HealthScript.Script.Invoke("AllowMovement", 0f);
 
         Dash();
     }
@@ -116,10 +110,7 @@ public class Charge : MonoBehaviour
 
     private void EnablePlayerMovement()
     {
-        if (IsOnPlayer)
-        {
-            PlayerMovement.instance.CanMove = true;
-        }
+        HealthScript.Script.Invoke("AllowMovement", 0f);
 
         ColScript.CanDamage = false;
         CanCharge = true;

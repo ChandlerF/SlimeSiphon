@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(FlashRed))]
 public class Health : MonoBehaviour
 {
-    [SerializeField] private float MaxHealth = 20f, CurrentHealth, KnockBackForce = 50f;
+    [SerializeField] private float MaxHealth = 20f, CurrentHealth, KnockBackForce = 75f;
 
     private FlashRed RedFlashScript;
     private Rigidbody2D rb;

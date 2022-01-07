@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public static PlayerMovement instance;
+    //public static PlayerMovement instance;
 
     public bool CanMove = true;
 
@@ -17,10 +17,6 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float runSpeed = 20.0f;
 
-    private void Awake()
-    {
-        instance = this;
-    }
 
     void Start()
     {

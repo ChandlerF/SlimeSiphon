@@ -179,7 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 20
   CurrentHealth: 0
-  KnockBackForce: 50
+  KnockBackForce: 75
   IsOnPlayer: 0
   Script: {fileID: 7095007908933400329}
 --- !u!114 &7095007908933400329

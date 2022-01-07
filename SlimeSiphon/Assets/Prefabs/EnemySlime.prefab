@@ -170,7 +170,6 @@ MonoBehaviour:
   FlashScript: {fileID: 0}
   WaitSecToDash: 0.3
   Player: {fileID: 0}
-  MovementScript: {fileID: 2148379853846648068}
 --- !u!114 &2148379853846648065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,7 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 20
   CurrentHealth: 0
-  KnockBackForce: 50
+  KnockBackForce: 75
   IsOnPlayer: 0
   Script: {fileID: 2148379853846648068}
 --- !u!114 &2148379853846648071
