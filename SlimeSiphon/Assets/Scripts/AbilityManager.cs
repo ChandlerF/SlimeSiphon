@@ -57,7 +57,6 @@ public class AbilityManager : MonoBehaviour
         else
         {
             CanUseTwo = true;
-            Debug.Log("Timer Ran");
         }
     }
 }

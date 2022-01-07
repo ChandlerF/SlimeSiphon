@@ -8,7 +8,7 @@ public class FlashColor : MonoBehaviour
     private Material FlashRedMat, FlashWhiteMat, FlashGreenMat, OriginalMat;
     private SpriteRenderer sr;
     private Coroutine RedFlashRoutine, WhiteFlashRoutine, GreenFlashRoutine;
-    [SerializeField] private float RedDuration = 0.2f, WhiteDuration = 0.2f, GreenDuration = 0.2f;
+    [SerializeField] private float RedDuration = 0.2f, WhiteDuration = 0.2f, GreenDuration = 0.4f;
 
     void Start()
     {

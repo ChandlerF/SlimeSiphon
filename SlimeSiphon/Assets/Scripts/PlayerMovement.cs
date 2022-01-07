@@ -15,14 +15,14 @@ public class PlayerMovement : MonoBehaviour
     //Limits diagnol movement
     private float moveLimiter = 0.7f;
 
-    private float runSpeed;
+    public float MoveSpeed;
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 
-        runSpeed = GetComponent<Health>().MoveSpeed;
+        MoveSpeed = GetComponent<Health>().MoveSpeed;
     }
 
     void Update()
@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
                 vertical *= moveLimiter;
             }
 
-            Vector2 newVel = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+            Vector2 newVel = new Vector2(horizontal * MoveSpeed, vertical * MoveSpeed);
 
             if (newVel != Vector2.zero)
             {
@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
         //Freeze Frame
         //Sound FX
 
-         runSpeed = GetComponent<Health>().MoveSpeed;
+        MoveSpeed = GetComponent<Health>().MoveSpeed;
     }
 
     public void StopMovement()

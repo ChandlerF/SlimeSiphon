@@ -136,11 +136,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2148379853846648067, guid: df2879ce909c39c4c9882004ed6c1477, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.421821
+      value: -5.61
       objectReference: {fileID: 0}
     - target: {fileID: 2148379853846648067, guid: df2879ce909c39c4c9882004ed6c1477, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.589623
+      value: 5.34
       objectReference: {fileID: 0}
     - target: {fileID: 2148379853846648067, guid: df2879ce909c39c4c9882004ed6c1477, type: 3}
       propertyPath: m_LocalPosition.z
@@ -197,11 +197,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7095007908933400338, guid: 9268e6e77ad2fa74aa6a049846b7c4aa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.433674
+      value: 7.65
       objectReference: {fileID: 0}
     - target: {fileID: 7095007908933400338, guid: 9268e6e77ad2fa74aa6a049846b7c4aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.091977
+      value: 5.94
       objectReference: {fileID: 0}
     - target: {fileID: 7095007908933400338, guid: 9268e6e77ad2fa74aa6a049846b7c4aa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -518,7 +518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RedDuration: 0.2
   WhiteDuration: 0.2
-  GreenDuration: 0.2
+  GreenDuration: 0.4
 --- !u!114 &1290378652
 MonoBehaviour:
   m_ObjectHideFlags: 0

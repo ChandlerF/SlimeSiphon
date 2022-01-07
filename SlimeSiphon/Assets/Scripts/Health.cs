@@ -34,8 +34,24 @@ public class Health : MonoBehaviour
 
     public void Heal(int hp)
     {
-        //Add hp
+        float dif = MaxHealth - CurrentHealth;
+
+        if(hp > dif)
+        {
+            CurrentHealth += dif;
+        }
+        else
+        {
+            CurrentHealth += hp;
+        }
+
         FlashColorScript.FlashGreen();
+        SetSpeed();
+
+        if (IsOnPlayer)
+        {
+            GetComponent<PlayerMovement>().MoveSpeed = MoveSpeed;
+        }
     }
 
 

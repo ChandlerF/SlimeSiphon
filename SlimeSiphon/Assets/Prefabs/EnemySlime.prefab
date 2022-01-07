@@ -245,4 +245,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RedDuration: 0.2
   WhiteDuration: 0.2
-  GreenDuration: 0.2
+  GreenDuration: 0.4
