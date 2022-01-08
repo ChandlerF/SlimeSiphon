@@ -17,7 +17,9 @@ public class AbilityManager : MonoBehaviour
 
     private GameObject InteractText, DeadBody, Canvas;
 
-    private bool FirstIsTop = true;
+    [SerializeField] private bool FirstIsTop = true;
+
+    private Transform AbilityParent;
 
     private void Awake()
     {
@@ -33,6 +35,7 @@ public class AbilityManager : MonoBehaviour
         InteractText = transform.GetChild(0).gameObject;
 
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
+        AbilityParent = Canvas.transform.GetChild(0).GetChild(0);
     }
 
 
@@ -49,7 +52,7 @@ public class AbilityManager : MonoBehaviour
 
 
 
-        else if (Input.GetMouseButtonDown(1) && CanUseTwo)
+        else if (Input.GetMouseButtonDown(1) && CanUseTwo && !HasOnlyOneAbility)
         {
             AbilityTwo.Invoke("Ability", 0f);
             TimerTwo = StartTimerTwo;
@@ -78,11 +81,11 @@ public class AbilityManager : MonoBehaviour
                 Destroy(AbilityTwo);
                 AbilityTwo = (MonoBehaviour)NewScript;
             }
+
+            SetAbilitySprite();
+
             HasOnlyOneAbility = false;
 
-
-            //Change Sprite to load from Resource folder
-            // string ScriptName = DeadBodyHealth.AbilityScript.GetType().Name;
 
             DeadBody.tag = "Untagged";              //--------------- Need to change this, so you can swap to your old ability, but not heal again
             DisableInteractive();
@@ -153,9 +156,6 @@ public class AbilityManager : MonoBehaviour
 
     private void FlipAbility()
     {
-
-        Transform AbilityParent = Canvas.transform.GetChild(0).GetChild(0);
-
         GameObject TopAbility = AbilityParent.GetChild(0).gameObject;
         Image TopImg = TopAbility.GetComponent<Image>();
 
@@ -187,6 +187,26 @@ public class AbilityManager : MonoBehaviour
         else
         {
             FirstIsTop = true;
+        }
+    }
+
+
+    private void SetAbilitySprite()       //Whenever I change the right click, the UI gets swapped
+    {
+        Sprite img = Resources.Load("Ability" + DeadBody.GetComponent<Health>().AbilityScript.GetType().Name, typeof(Sprite)) as Sprite;
+        GameObject TopAbility = AbilityParent.GetChild(0).gameObject;
+        Image TopImg = TopAbility.GetComponent<Image>();
+
+        GameObject BottomAbility = AbilityParent.GetChild(2).gameObject;
+        Image BottomImg = BottomAbility.GetComponent<Image>();
+        
+        if (!HasOnlyOneAbility)
+        {
+            TopImg.sprite = img;
+        }
+        else
+        {
+            BottomImg.sprite = img;
         }
     }
 }
