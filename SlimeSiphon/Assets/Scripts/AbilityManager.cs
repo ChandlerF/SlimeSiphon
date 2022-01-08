@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AbilityManager : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class AbilityManager : MonoBehaviour
 
     private bool TouchingBody = false;
 
-    private GameObject InteractText;
+    private GameObject InteractText, DeadBody, Canvas;
 
     void Start()
     {
@@ -22,6 +23,8 @@ public class AbilityManager : MonoBehaviour
         TimerTwo = StartTimerTwo;
 
         InteractText = transform.GetChild(0).gameObject;
+
+        Canvas = GameObject.FindGameObjectWithTag("Canvas");
     }
 
 
@@ -44,7 +47,40 @@ public class AbilityManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.F) && TouchingBody)
         {
-            Debug.Log("My Ability");
+            //Debug.Log("My Ability");
+            GetComponent<Health>().Heal(DeadBody.GetComponent<Health>().MaxHealth / 2);
+
+
+            DeadBody.tag = "Untagged";
+            DisableInteractive();
+        }
+        else if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Transform AbilityParent = Canvas.transform.GetChild(0).GetChild(0);
+
+            GameObject TopAbility = AbilityParent.GetChild(0).gameObject;
+            Image TopImg = TopAbility.GetComponent<Image>();
+
+            GameObject LeftClick = AbilityParent.GetChild(1).gameObject;
+            Image LClickImg = LeftClick.GetComponent<Image>();
+
+            GameObject BottomAbility = AbilityParent.GetChild(2).gameObject;
+            Image BottomImg = BottomAbility.GetComponent<Image>();
+
+            GameObject RightClick = AbilityParent.GetChild(3).gameObject;
+            Image RClickImg = RightClick.GetComponent<Image>();
+
+
+            Sprite TempAbility = TopImg.sprite;
+
+            TopImg.sprite = BottomImg.sprite;
+            BottomImg.sprite = TempAbility;
+
+
+            Sprite TempClick = LClickImg.sprite;
+
+            LClickImg.sprite = RClickImg.sprite;
+            RClickImg.sprite = TempClick;
         }
 
 
@@ -80,6 +116,7 @@ public class AbilityManager : MonoBehaviour
         if (col.transform.CompareTag("Dead"))
         {
             InteractText.SetActive(true);
+            DeadBody = col.gameObject;
             TouchingBody = true;
         }
     }
@@ -88,8 +125,16 @@ public class AbilityManager : MonoBehaviour
     {
         if (col.transform.CompareTag("Dead"))
         {
-            InteractText.SetActive(false);
-            TouchingBody = false;
+            DisableInteractive();
         }
+    }
+
+
+    private void DisableInteractive()
+    {
+
+        InteractText.SetActive(false);
+        DeadBody = null;
+        TouchingBody = false;
     }
 }

@@ -84,6 +84,7 @@ public class FlashColor : MonoBehaviour
 
         yield return new WaitForSeconds(GreenDuration);
 
+
         sr.material = OriginalMat;
 
         GreenFlashRoutine = null;

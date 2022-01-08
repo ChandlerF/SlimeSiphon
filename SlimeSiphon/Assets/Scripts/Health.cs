@@ -5,7 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(FlashColor))]
 public class Health : MonoBehaviour
 {
-    [SerializeField] private float MaxHealth = 20f, CurrentHealth, KnockBackForce = 75f;
+    public float MaxHealth = 20f;
+    [SerializeField] private float CurrentHealth, KnockBackForce = 75f;
 
     public float StartMoveSpeed = 120f, MoveSpeed;
 
@@ -38,7 +39,7 @@ public class Health : MonoBehaviour
         PopupText = Resources.Load("FloatingParent", typeof(GameObject)) as GameObject;
     }
 
-    public void Heal(int hp)
+    public void Heal(float hp)
     {
         if (IsAlive)
         {
