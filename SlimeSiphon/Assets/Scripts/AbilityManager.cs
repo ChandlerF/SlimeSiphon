@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,16 +6,23 @@ using UnityEngine.UI;
 
 public class AbilityManager : MonoBehaviour
 {
+    public static AbilityManager instance;
+
     public MonoBehaviour AbilityOne, AbilityTwo;
 
     public float StartTimerOne, StartTimerTwo;
     private float TimerOne, TimerTwo;
 
-    private bool CanUseOne = false, CanUseTwo = false;
-
-    private bool TouchingBody = false;
+    private bool CanUseOne = false, CanUseTwo = false, TouchingBody = false, HasOnlyOneAbility = true;
 
     private GameObject InteractText, DeadBody, Canvas;
+
+    private bool FirstIsTop = true;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
@@ -38,6 +46,9 @@ public class AbilityManager : MonoBehaviour
 
             CanUseOne = false;
         }
+
+
+
         else if (Input.GetMouseButtonDown(1) && CanUseTwo)
         {
             AbilityTwo.Invoke("Ability", 0f);
@@ -45,42 +56,43 @@ public class AbilityManager : MonoBehaviour
 
             CanUseTwo = false;
         }
+
+
+
         else if (Input.GetKeyDown(KeyCode.F) && TouchingBody)
         {
-            //Debug.Log("My Ability");
-            GetComponent<Health>().Heal(DeadBody.GetComponent<Health>().MaxHealth / 2);
+            Health DeadBodyHealth = DeadBody.GetComponent<Health>();
+
+            GetComponent<Health>().Heal(DeadBodyHealth.MaxHealth / 2); //Should also say that you've healed from it already
 
 
-            DeadBody.tag = "Untagged";
+            Component NewScript = gameObject.AddComponent(DeadBodyHealth.AbilityScript.GetType());
+
+            if (FirstIsTop && !HasOnlyOneAbility)
+            {
+                Destroy(AbilityOne);
+                AbilityOne = (MonoBehaviour)NewScript;
+            }
+            else
+            {
+                Destroy(AbilityTwo);
+                AbilityTwo = (MonoBehaviour)NewScript;
+            }
+            HasOnlyOneAbility = false;
+
+
+            //Change Sprite to load from Resource folder
+            // string ScriptName = DeadBodyHealth.AbilityScript.GetType().Name;
+
+            DeadBody.tag = "Untagged";              //--------------- Need to change this, so you can swap to your old ability, but not heal again
             DisableInteractive();
         }
+
+
+
         else if (Input.GetKeyDown(KeyCode.Q))
         {
-            Transform AbilityParent = Canvas.transform.GetChild(0).GetChild(0);
-
-            GameObject TopAbility = AbilityParent.GetChild(0).gameObject;
-            Image TopImg = TopAbility.GetComponent<Image>();
-
-            GameObject LeftClick = AbilityParent.GetChild(1).gameObject;
-            Image LClickImg = LeftClick.GetComponent<Image>();
-
-            GameObject BottomAbility = AbilityParent.GetChild(2).gameObject;
-            Image BottomImg = BottomAbility.GetComponent<Image>();
-
-            GameObject RightClick = AbilityParent.GetChild(3).gameObject;
-            Image RClickImg = RightClick.GetComponent<Image>();
-
-
-            Sprite TempAbility = TopImg.sprite;
-
-            TopImg.sprite = BottomImg.sprite;
-            BottomImg.sprite = TempAbility;
-
-
-            Sprite TempClick = LClickImg.sprite;
-
-            LClickImg.sprite = RClickImg.sprite;
-            RClickImg.sprite = TempClick;
+            FlipAbility();
         }
 
 
@@ -136,5 +148,45 @@ public class AbilityManager : MonoBehaviour
         InteractText.SetActive(false);
         DeadBody = null;
         TouchingBody = false;
+    }
+
+
+    private void FlipAbility()
+    {
+
+        Transform AbilityParent = Canvas.transform.GetChild(0).GetChild(0);
+
+        GameObject TopAbility = AbilityParent.GetChild(0).gameObject;
+        Image TopImg = TopAbility.GetComponent<Image>();
+
+        GameObject LeftClick = AbilityParent.GetChild(1).gameObject;
+        Image LClickImg = LeftClick.GetComponent<Image>();
+
+        GameObject BottomAbility = AbilityParent.GetChild(2).gameObject;
+        Image BottomImg = BottomAbility.GetComponent<Image>();
+
+        GameObject RightClick = AbilityParent.GetChild(3).gameObject;
+        Image RClickImg = RightClick.GetComponent<Image>();
+
+
+        Sprite TempAbility = TopImg.sprite;
+
+        TopImg.sprite = BottomImg.sprite;
+        BottomImg.sprite = TempAbility;
+
+
+        Sprite TempClick = LClickImg.sprite;
+
+        LClickImg.sprite = RClickImg.sprite;
+        RClickImg.sprite = TempClick;
+
+        if (FirstIsTop)
+        {
+            FirstIsTop = false;
+        }
+        else
+        {
+            FirstIsTop = true;
+        }
     }
 }
