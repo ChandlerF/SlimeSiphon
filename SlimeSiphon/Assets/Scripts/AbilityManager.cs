@@ -76,17 +76,24 @@ public class AbilityManager : MonoBehaviour
             {
                 Destroy(AbilityOne);
                 AbilityOne = (MonoBehaviour)NewScript;
+
+                StartTimerOne = DeadBodyHealth.Delay;
+                TimerOne = StartTimerOne;
             }
             else
             {
                 Destroy(AbilityTwo);
                 AbilityTwo = (MonoBehaviour)NewScript;
+
+                StartTimerTwo = DeadBodyHealth.Delay;
+                TimerTwo = StartTimerTwo;
             }
 
             SetAbilitySprite();
 
-            HasOnlyOneAbility = false;
 
+
+            HasOnlyOneAbility = false;
 
             DeadBody.tag = "Untagged";              //--------------- Need to change this, so you can swap to your old ability, but not heal again
             DisableInteractive();

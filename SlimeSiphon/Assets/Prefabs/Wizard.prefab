@@ -170,10 +170,12 @@ MonoBehaviour:
   KnockBackForce: 75
   StartMoveSpeed: 160
   MoveSpeed: 0
+  IsInvincible: 0
   IsOnPlayer: 0
   IsAlive: 1
   MovementScript: {fileID: 7095007908933400329}
   AbilityScript: {fileID: 7095007908933400342}
+  Delay: 2
 --- !u!114 &7095007908933400329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +190,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StopDistance: 70
   RetreatDistance: 35
-  StartShootTimer: 2.5
 --- !u!114 &7095007908933400342
 MonoBehaviour:
   m_ObjectHideFlags: 0

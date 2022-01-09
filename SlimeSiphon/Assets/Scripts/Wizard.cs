@@ -5,8 +5,8 @@ using UnityEngine;
 public class Wizard : MonoBehaviour
 {
     private GameObject Player;
-    [SerializeField] private float StopDistance, RetreatDistance, StartShootTimer;
-    private float MoveSpeed, ShootTimer;
+    [SerializeField] private float StopDistance, RetreatDistance;
+    private float MoveSpeed, StartShootTimer, ShootTimer;
     private bool Aggro = false, CanShoot = false;
     private Vector3 MoveDir;
     private Rigidbody2D rb;
@@ -19,6 +19,8 @@ public class Wizard : MonoBehaviour
         FireBall = GetComponent<Fireball>();
         rb = GetComponent<Rigidbody2D>();
 
+
+        StartShootTimer = GetComponent<Health>().Delay;
         ShootTimer = StartShootTimer;
         MoveSpeed = GetComponent<Health>().MoveSpeed;
     }

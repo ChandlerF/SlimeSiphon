@@ -23,6 +23,8 @@ public class Health : MonoBehaviour
 
     public MonoBehaviour MovementScript, AbilityScript;
 
+    public float Delay;
+
 
     //Particle, and a color to set in inspector, so it looks like bits break off the person when damaged
 
