@@ -93,7 +93,7 @@ public class AbilityManager : MonoBehaviour
 
 
 
-        else if (Input.GetKeyDown(KeyCode.Q))
+        else if (Input.GetKeyDown(KeyCode.Q) && !HasOnlyOneAbility)
         {
             FlipAbility();
         }

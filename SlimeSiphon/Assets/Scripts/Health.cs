@@ -61,6 +61,10 @@ public class Health : MonoBehaviour
             {
                 GetComponent<PlayerMovement>().MoveSpeed = MoveSpeed;
             }
+
+            GameObject SpawnedText = Instantiate(PopupText, transform.position, Quaternion.identity);
+            SpawnedText.GetComponent<PopupText>().Text.text = "+" + hp.ToString();
+            SpawnedText.GetComponent<PopupText>().Text.color = Color.green;
         }
     }
 
