@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,6 +21,8 @@ public class AbilityManager : MonoBehaviour
     [SerializeField] private bool FirstIsTop = true;
 
     private Transform AbilityParent;
+
+    private Health DeadBodyHealth;
 
     private void Awake()
     {
@@ -64,9 +67,7 @@ public class AbilityManager : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.F) && TouchingBody)
         {
-            Health DeadBodyHealth = DeadBody.GetComponent<Health>();
-
-            GetComponent<Health>().Heal(DeadBodyHealth.MaxHealth / 2); //Should also say that you've healed from it already
+            GetComponent<Health>().Heal(DeadBodyHealth.MaxHealth / 2);
 
 
             Component NewScript = gameObject.AddComponent(DeadBodyHealth.AbilityScript.GetType());
@@ -96,6 +97,11 @@ public class AbilityManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Q) && !HasOnlyOneAbility)
         {
             FlipAbility();
+
+            if (InteractText.activeSelf)
+            {
+                ChangeInteractText();
+            }
         }
 
 
@@ -130,8 +136,23 @@ public class AbilityManager : MonoBehaviour
     {
         if (col.transform.CompareTag("Dead"))
         {
-            InteractText.SetActive(true);
             DeadBody = col.gameObject;
+            DeadBodyHealth = DeadBody.GetComponent<Health>();
+
+
+
+            InteractText.SetActive(true);
+
+            if (HasOnlyOneAbility)
+            {
+                InteractText.GetComponent<TextMeshPro>().text = "Pickup " + DeadBodyHealth.AbilityScript.GetType().Name;
+            }
+            else
+            {
+                ChangeInteractText();
+            }
+
+
             TouchingBody = true;
         }
     }
@@ -193,7 +214,7 @@ public class AbilityManager : MonoBehaviour
 
     private void SetAbilitySprite()       //Whenever I change the right click, the UI gets swapped
     {
-        Sprite img = Resources.Load("Ability" + DeadBody.GetComponent<Health>().AbilityScript.GetType().Name, typeof(Sprite)) as Sprite;
+        Sprite img = Resources.Load("Ability" + DeadBodyHealth.AbilityScript.GetType().Name, typeof(Sprite)) as Sprite;
         GameObject TopAbility = AbilityParent.GetChild(0).gameObject;
         Image TopImg = TopAbility.GetComponent<Image>();
 
@@ -208,5 +229,25 @@ public class AbilityManager : MonoBehaviour
         {
             BottomImg.sprite = img;
         }
+    }
+
+
+
+
+    private void ChangeInteractText()
+    {
+        string currentAbility = "";
+
+        if (FirstIsTop)
+        {
+            currentAbility = AbilityOne.GetType().Name;
+        }
+        else
+        {
+            currentAbility = AbilityTwo.GetType().Name;
+        }
+
+        string DeadBodyAbility = DeadBodyHealth.AbilityScript.GetType().Name;
+        InteractText.GetComponent<TextMeshPro>().text = "Replace " + currentAbility + " with " + DeadBodyAbility;
     }
 }

@@ -102,7 +102,7 @@ public class Health : MonoBehaviour
             MovementScript.Invoke("TakenDamage", 0f);
 
             IsInvincible = true;
-            Invoke("MakeMortal", 0.4f);
+            Invoke("MakeMortal", 0.5f);
 
             /*
             if (IsOnPlayer)     //TakenDamage() is on every Player/Enemy

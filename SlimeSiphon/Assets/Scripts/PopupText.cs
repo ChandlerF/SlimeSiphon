@@ -8,6 +8,9 @@ public class PopupText : MonoBehaviour
 
     void Start()
     {
+        transform.GetChild(0).DOMoveY(transform.position.y + 1, 1f);
+
+
         transform.GetChild(0).DOScale(new Vector3(1, 1, 1), 0.45f).SetEase(Ease.InOutBack).OnComplete(() => 
         {
             Invoke("FinishTween", 0.5f);
