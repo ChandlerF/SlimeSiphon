@@ -24,6 +24,8 @@ public class AbilityManager : MonoBehaviour
 
     private Health DeadBodyHealth;
 
+    private Image CooldownOne, CooldownTwo;
+
     private void Awake()
     {
         instance = this;
@@ -39,6 +41,9 @@ public class AbilityManager : MonoBehaviour
 
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
         AbilityParent = Canvas.transform.GetChild(0).GetChild(0);
+
+        CooldownOne = transform.GetChild(1).GetChild(0).GetChild(0).gameObject.GetComponent<Image>();
+        CooldownTwo = transform.GetChild(1).GetChild(0).GetChild(1).gameObject.GetComponent<Image>();
     }
 
 
@@ -116,6 +121,7 @@ public class AbilityManager : MonoBehaviour
         if (TimerOne > 0 && CanUseOne == false)
         {
             TimerOne -= Time.deltaTime;
+            CooldownOne.fillAmount = StartTimerOne / TimerOne;
         }
         else
         {
@@ -127,6 +133,7 @@ public class AbilityManager : MonoBehaviour
         if(TimerTwo > 0 && CanUseTwo == false)
         {
             TimerTwo -= Time.deltaTime;
+            CooldownTwo.fillAmount = StartTimerTwo / TimerTwo;
         }
         else
         {
