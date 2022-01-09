@@ -121,7 +121,7 @@ public class AbilityManager : MonoBehaviour
         if (TimerOne > 0 && CanUseOne == false)
         {
             TimerOne -= Time.deltaTime;
-            CooldownOne.fillAmount = StartTimerOne / TimerOne;
+            CooldownOne.fillAmount = 1 - (TimerOne / StartTimerOne);
         }
         else
         {
@@ -133,7 +133,7 @@ public class AbilityManager : MonoBehaviour
         if(TimerTwo > 0 && CanUseTwo == false)
         {
             TimerTwo -= Time.deltaTime;
-            CooldownTwo.fillAmount = StartTimerTwo / TimerTwo;
+            CooldownTwo.fillAmount = 1 - (TimerTwo / StartTimerTwo);
         }
         else
         {
@@ -215,6 +215,7 @@ public class AbilityManager : MonoBehaviour
         LClickImg.sprite = RClickImg.sprite;
         RClickImg.sprite = TempClick;
 
+
         if (FirstIsTop)
         {
             FirstIsTop = false;
@@ -226,7 +227,7 @@ public class AbilityManager : MonoBehaviour
     }
 
 
-    private void SetAbilitySprite()       //Whenever I change the right click, the UI gets swapped
+    private void SetAbilitySprite() 
     {
         Sprite img = Resources.Load("Ability" + DeadBodyHealth.AbilityScript.GetType().Name, typeof(Sprite)) as Sprite;
         GameObject TopAbility = AbilityParent.GetChild(0).gameObject;
@@ -242,6 +243,16 @@ public class AbilityManager : MonoBehaviour
         else
         {
             BottomImg.sprite = img;
+        }
+
+
+        if (FirstIsTop && !HasOnlyOneAbility)
+        {
+            CooldownOne.sprite = img;
+        }
+        else
+        {
+            CooldownTwo.sprite = img;
         }
     }
 
