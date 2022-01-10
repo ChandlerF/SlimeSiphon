@@ -27,7 +27,7 @@ public class Health : MonoBehaviour
 
     private Color particleColor;
 
-    [SerializeField] private GameObject HitParticles;
+    private GameObject HitParticles;
 
     //Particle, and a color to set in inspector, so it looks like bits break off the person when damaged
 
@@ -42,6 +42,7 @@ public class Health : MonoBehaviour
         FlashColorScript = GetComponent<FlashColor>();
         rb = GetComponent<Rigidbody2D>();
         PopupText = Resources.Load("FloatingParent", typeof(GameObject)) as GameObject;
+        HitParticles = Resources.Load("HitParticles", typeof(GameObject)) as GameObject;
 
 
         if (IsOnPlayer)
@@ -131,11 +132,13 @@ public class Health : MonoBehaviour
             if (IsOnPlayer)
             {
                 CameraShake.cam.Trauma += 0.35f;
+                AudioManager.instance.Play("HitPlayer");
                 FreezeFrame(0.1f);
             }
             else
             {
                 CameraShake.cam.Trauma += 0.12f;
+                AudioManager.instance.Play("HitEnemy");
                 FreezeFrame(0.05f);
             }
         }
@@ -150,6 +153,16 @@ public class Health : MonoBehaviour
         AbilityScript.enabled = false;
         transform.tag = "Dead";
         gameObject.layer = 11;  //"Dead" Layer
+
+        if (IsOnPlayer)
+        {
+            AudioManager.instance.Play("PlayerDeath");
+        }
+        else
+        {
+            AudioManager.instance.Play("EnemyDeath");
+        }
+
 
         CameraShake.cam.Trauma += 0.2f;
         FreezeFrame(0.1f);

@@ -67,6 +67,9 @@ public class AbilityManager : MonoBehaviour
             BottomImg.sprite = img;
             CooldownTwo.sprite = img;
         }
+
+
+        AudioManager.instance.Play("Start");
     }
 
 

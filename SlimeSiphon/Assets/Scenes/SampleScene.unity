@@ -2035,7 +2035,6 @@ MonoBehaviour:
   MovementScript: {fileID: 1290378644}
   AbilityScript: {fileID: 1290378648}
   Delay: 0
-  HitParticles: {fileID: 7070758464511682255, guid: a6a7329c6c0672e42819a4025fada00c, type: 3}
 --- !u!114 &1290378653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2560,3 +2559,87 @@ MonoBehaviour:
   spacing: {x: 20, y: 40}
   fitX: 1
   fitY: 1
+--- !u!1 &2124965795
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2124965797}
+  - component: {fileID: 2124965796}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2124965796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124965795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e47bfc8023d6541a04fa4de9b9cf0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Start
+    clip: {fileID: 8300000, guid: 3dd1fb8e1ad0b87478d084a99e91c2db, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: Charge
+    clip: {fileID: 8300000, guid: fce93393f8aaab3409d69513659d62d3, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: HitPlayer
+    clip: {fileID: 8300000, guid: 782011dc23b66804ea30bca65a0839fc, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: HitEnemy
+    clip: {fileID: 8300000, guid: e7bc88edfa6ed1a428c5bfbf45384e5a, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: PlayerDeath
+    clip: {fileID: 8300000, guid: 8447f2fcec349104b9feeee3cbecaf43, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: EnemyDeath
+    clip: {fileID: 8300000, guid: a9e06894c1d0091409e32f75aec23d58, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: ShootFireball
+    clip: {fileID: 8300000, guid: a9e06894c1d0091409e32f75aec23d58, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: ShootFireball
+    clip: {fileID: 8300000, guid: a9e06894c1d0091409e32f75aec23d58, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+--- !u!4 &2124965797
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124965795}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 777.5378, y: 629.31006, z: -41.86718}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
