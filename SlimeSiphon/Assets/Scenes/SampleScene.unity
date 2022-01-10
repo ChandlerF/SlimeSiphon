@@ -893,14 +893,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
+--- !u!114 &519420029
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb06b978b38fd34a9a494e05ba146d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SmoothSpeed: 0.1
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1828,6 +1833,7 @@ GameObject:
   - component: {fileID: 1290378652}
   - component: {fileID: 1290378653}
   - component: {fileID: 1290378651}
+  - component: {fileID: 1290378654}
   - component: {fileID: 1290378649}
   m_Layer: 6
   m_Name: Player
@@ -1964,12 +1970,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1290378643}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14765239554d07242a31b1fa13d45182, type: 3}
+  m_Script: {fileID: 11500000, guid: b023784b57be7254492e8d5e45078fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Force: 20
-  direction: {x: 0, y: 0, z: 0}
-  mousePos: {x: 0, y: 0, z: 0}
+  DashForce: 250
+  FlashColorScript: {fileID: 0}
+  WaitSecToDash: 0.3
   Player: {fileID: 0}
 --- !u!61 &1290378650
 BoxCollider2D:
@@ -2050,6 +2056,14 @@ MonoBehaviour:
   CanDamage: 0
   Damage: 10
   KillOnCol: 0
+--- !u!81 &1290378654
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290378643}
+  m_Enabled: 1
 --- !u!1 &1320454038
 GameObject:
   m_ObjectHideFlags: 0
@@ -2596,7 +2610,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Charge
     clip: {fileID: 8300000, guid: fce93393f8aaab3409d69513659d62d3, type: 3}
-    volume: 0.5
+    volume: 0.35
     pitch: 1
     source: {fileID: 0}
   - name: HitPlayer
@@ -2611,17 +2625,27 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: PlayerDeath
     clip: {fileID: 8300000, guid: 8447f2fcec349104b9feeee3cbecaf43, type: 3}
-    volume: 0.5
+    volume: 0.6
     pitch: 1
     source: {fileID: 0}
   - name: EnemyDeath
     clip: {fileID: 8300000, guid: a9e06894c1d0091409e32f75aec23d58, type: 3}
-    volume: 0.5
+    volume: 0.6
     pitch: 1
     source: {fileID: 0}
   - name: ShootFireball
     clip: {fileID: 8300000, guid: 7f93b964ea4015b4ea698aef259c14a3, type: 3}
+    volume: 0.35
+    pitch: 1
+    source: {fileID: 0}
+  - name: PickupAbility
+    clip: {fileID: 8300000, guid: 9f3bf18d57f9c19459a81471d6a2d2ee, type: 3}
     volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: PreCharge
+    clip: {fileID: 8300000, guid: 0f271e5b6cf86ca4ab5339d3ac794e6f, type: 3}
+    volume: 0.35
     pitch: 1
     source: {fileID: 0}
 --- !u!4 &2124965797

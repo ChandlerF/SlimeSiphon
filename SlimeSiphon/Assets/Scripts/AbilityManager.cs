@@ -69,7 +69,7 @@ public class AbilityManager : MonoBehaviour
         }
 
 
-        AudioManager.instance.Play("Start", gameObject);
+        AudioManager.instance.Play("Start");
     }
 
 
@@ -124,7 +124,7 @@ public class AbilityManager : MonoBehaviour
 
             SetAbilitySprite();
 
-
+            AudioManager.instance.Play("PickupAbility");
 
             HasOnlyOneAbility = false;
 
