@@ -448,10 +448,10 @@ RectTransform:
   m_Father: {fileID: 399211114}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 336.7519, y: -50}
-  m_SizeDelta: {x: 673.5037, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &189392483
 MonoBehaviour:
@@ -757,10 +757,10 @@ RectTransform:
   m_Father: {fileID: 771098901}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 336.75183, y: -50}
-  m_SizeDelta: {x: 673.5037, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &399211115
 MonoBehaviour:
@@ -1298,8 +1298,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 336.75183, y: -50}
-  m_SizeDelta: {x: 673.5037, y: 100}
+  m_AnchoredPosition: {x: 336.75183, y: -37.0916}
+  m_SizeDelta: {x: 673.5037, y: 74.1831}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &771098902
 MonoBehaviour:
@@ -2620,12 +2620,7 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
   - name: ShootFireball
-    clip: {fileID: 8300000, guid: a9e06894c1d0091409e32f75aec23d58, type: 3}
-    volume: 0.5
-    pitch: 1
-    source: {fileID: 0}
-  - name: ShootFireball
-    clip: {fileID: 8300000, guid: a9e06894c1d0091409e32f75aec23d58, type: 3}
+    clip: {fileID: 8300000, guid: 7f93b964ea4015b4ea698aef259c14a3, type: 3}
     volume: 0.5
     pitch: 1
     source: {fileID: 0}
