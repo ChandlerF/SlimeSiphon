@@ -107,7 +107,7 @@ public class Health : MonoBehaviour
             {
                 particleColor = GetComponent<SpriteRenderer>().color;
             }
-            Debug.Log(particleColor);
+
             SpawnedParticles.GetComponent<ParticleSystem>().startColor = particleColor;
 
 
@@ -126,13 +126,15 @@ public class Health : MonoBehaviour
             Invoke("MakeMortal", 0.5f);
 
             
-            if (IsOnPlayer)     //TakenDamage() is on every Player/Enemy
+            if (IsOnPlayer)
             {
                 CameraShake.cam.Trauma += 0.35f;
+                FreezeFrame(0.1f);
             }
             else
             {
                 CameraShake.cam.Trauma += 0.12f;
+                FreezeFrame(0.05f);
             }
         }
     }
@@ -152,6 +154,7 @@ public class Health : MonoBehaviour
         gameObject.layer = 11;  //Dead
 
         CameraShake.cam.Trauma += 0.2f;
+        FreezeFrame(0.1f);
     }
 
 
@@ -177,5 +180,19 @@ public class Health : MonoBehaviour
         float percent = CurrentHealth / MaxHealth;
 
         MoveSpeed = StartMoveSpeed * percent;
+    }
+
+
+    private void FreezeFrame(float duration)
+    {
+        Time.timeScale = 0f;
+
+        StartCoroutine(UnFreezeFrame(duration));
+    }
+
+    private IEnumerator UnFreezeFrame(float dur)
+    {
+        yield return new WaitForSecondsRealtime(dur);
+        Time.timeScale = 1f;
     }
 }
