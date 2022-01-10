@@ -66,6 +66,8 @@ public class AbilityManager : MonoBehaviour
 
             BottomImg.sprite = img;
             CooldownTwo.sprite = img;
+
+            HasOnlyOneAbility = false;
         }
 
 
@@ -136,6 +138,7 @@ public class AbilityManager : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.Q) && !HasOnlyOneAbility)
         {
+            AudioManager.instance.Play("SwappedAbilityUI");
             FlipAbility();
 
             if (InteractText.activeSelf)
