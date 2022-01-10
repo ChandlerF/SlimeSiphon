@@ -56,12 +56,19 @@ public class PlayerMovement : MonoBehaviour
 
     public void TakenDamage()
     {
-        //Screenshake
-        //Freeze Frame
-        //Sound FX
-
         MoveSpeed = GetComponent<Health>().MoveSpeed;
+
+        HealthBar.instance.SetHealthBar(GetComponent<Health>().CurrentHealth);
     }
+
+    public void Healed()
+    {
+        MoveSpeed = GetComponent<Health>().MoveSpeed;
+
+        HealthBar.instance.SetHealthBar(GetComponent<Health>().CurrentHealth);
+    }
+
+
 
     public void StopMovement()
     {

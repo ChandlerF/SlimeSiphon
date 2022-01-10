@@ -5,8 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(FlashColor))]
 public class Health : MonoBehaviour
 {
-    public float MaxHealth = 20f;
-    [SerializeField] private float CurrentHealth, KnockBackForce = 75f;
+    public float MaxHealth = 20f, CurrentHealth;
+    [SerializeField] private float KnockBackForce = 75f;
 
     public float StartMoveSpeed = 120f, MoveSpeed;
 
@@ -25,6 +25,8 @@ public class Health : MonoBehaviour
 
     public float Delay;
 
+    private Color particleColor;
+
     [SerializeField] private GameObject HitParticles;
 
     //Particle, and a color to set in inspector, so it looks like bits break off the person when damaged
@@ -40,6 +42,16 @@ public class Health : MonoBehaviour
         FlashColorScript = GetComponent<FlashColor>();
         rb = GetComponent<Rigidbody2D>();
         PopupText = Resources.Load("FloatingParent", typeof(GameObject)) as GameObject;
+
+
+        if (IsOnPlayer)
+        {
+            particleColor = new Color(99f / 255f, 155f / 255f, 255f / 255f, 1); //639BFF
+        }
+        else
+        {
+            particleColor = GetComponent<SpriteRenderer>().color;
+        }
     }
 
     public void Heal(float hp)
@@ -62,7 +74,7 @@ public class Health : MonoBehaviour
 
             if (IsOnPlayer)
             {
-                GetComponent<PlayerMovement>().MoveSpeed = MoveSpeed;
+                MovementScript.Invoke("Healed", 0f);
             }
 
             GameObject SpawnedText = Instantiate(PopupText, transform.position, Quaternion.identity);
@@ -97,16 +109,6 @@ public class Health : MonoBehaviour
 
             GameObject SpawnedParticles = Instantiate(HitParticles, transform.position, Quaternion.identity);
 
-            Color particleColor = new Color();
-            if (IsOnPlayer)
-            {
-                particleColor = new Color(99f / 255f, 155f / 255f, 255f / 255f, 1); //639BFF
-                Debug.Log("Issa Player");
-            }
-            else
-            {
-                particleColor = GetComponent<SpriteRenderer>().color;
-            }
 
             SpawnedParticles.GetComponent<ParticleSystem>().startColor = particleColor;
 
@@ -142,16 +144,12 @@ public class Health : MonoBehaviour
 
     public void Death()
     {
-        //Particles
-        //ScreenShake
-        //Destroy(gameObject);
-
         IsAlive = false;
         GetComponent<Rigidbody2D>().mass *= 6;
         Destroy(MovementScript);
         AbilityScript.enabled = false;
         transform.tag = "Dead";
-        gameObject.layer = 11;  //Dead
+        gameObject.layer = 11;  //"Dead" Layer
 
         CameraShake.cam.Trauma += 0.2f;
         FreezeFrame(0.1f);
