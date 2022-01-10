@@ -114,7 +114,6 @@ public class Health : MonoBehaviour
             SpawnedParticles.GetComponent<ParticleSystem>().startColor = particleColor;
 
 
-
             if (CurrentHealth <= 0)
             {
                 Death();

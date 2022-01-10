@@ -5,7 +5,7 @@ using UnityEngine;
 public class RandomizeColor : MonoBehaviour
 {
     private float x, y, z;
-    void Start()
+    void Awake()
     {   
         //Max = 255     Min 122     Other between the 2
 
