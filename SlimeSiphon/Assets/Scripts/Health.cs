@@ -25,6 +25,7 @@ public class Health : MonoBehaviour
 
     public float Delay;
 
+    [SerializeField] private GameObject HitParticles;
 
     //Particle, and a color to set in inspector, so it looks like bits break off the person when damaged
 
@@ -93,6 +94,24 @@ public class Health : MonoBehaviour
             FlashColorScript.FlashRed();
 
             Knockback(pos, 1f);
+
+            GameObject SpawnedParticles = Instantiate(HitParticles, transform.position, Quaternion.identity);
+
+            Color particleColor = new Color();
+            if (IsOnPlayer)
+            {
+                particleColor = new Color(99f / 255f, 155f / 255f, 255f / 255f, 1); //639BFF
+                Debug.Log("Issa Player");
+            }
+            else
+            {
+                particleColor = GetComponent<SpriteRenderer>().color;
+            }
+            Debug.Log(particleColor);
+            SpawnedParticles.GetComponent<ParticleSystem>().startColor = particleColor;
+
+
+
             if (CurrentHealth <= 0)
             {
                 Death();
@@ -106,15 +125,15 @@ public class Health : MonoBehaviour
             IsInvincible = true;
             Invoke("MakeMortal", 0.5f);
 
-            /*
+            
             if (IsOnPlayer)     //TakenDamage() is on every Player/Enemy
             {
-                //ScreenShake for being damaged
+                CameraShake.cam.Trauma += 0.35f;
             }
             else
             {
-                //for doing damage
-            }*/
+                CameraShake.cam.Trauma += 0.12f;
+            }
         }
     }
 
@@ -131,6 +150,8 @@ public class Health : MonoBehaviour
         AbilityScript.enabled = false;
         transform.tag = "Dead";
         gameObject.layer = 11;  //Dead
+
+        CameraShake.cam.Trauma += 0.2f;
     }
 
 

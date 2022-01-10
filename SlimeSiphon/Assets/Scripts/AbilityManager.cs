@@ -44,6 +44,29 @@ public class AbilityManager : MonoBehaviour
 
         CooldownOne = transform.GetChild(1).GetChild(0).GetChild(0).gameObject.GetComponent<Image>();
         CooldownTwo = transform.GetChild(1).GetChild(0).GetChild(1).gameObject.GetComponent<Image>();
+
+
+        if(AbilityOne != null)
+        {
+            Sprite img = Resources.Load("Ability" + AbilityOne.GetType().Name, typeof(Sprite)) as Sprite;
+
+            GameObject TopAbility = AbilityParent.GetChild(0).gameObject;
+            Image TopImg = TopAbility.GetComponent<Image>();
+
+            TopImg.sprite = img;
+            CooldownOne.sprite = img;
+        }
+
+        if (AbilityTwo != null)
+        {
+            Sprite img = Resources.Load("Ability" + AbilityTwo.GetType().Name, typeof(Sprite)) as Sprite;
+
+            GameObject BottomAbility = AbilityParent.GetChild(2).gameObject;
+            Image BottomImg = BottomAbility.GetComponent<Image>();
+
+            BottomImg.sprite = img;
+            CooldownTwo.sprite = img;
+        }
     }
 
 
@@ -53,7 +76,8 @@ public class AbilityManager : MonoBehaviour
         {
             AbilityOne.Invoke("Ability", 0f);
             TimerOne = StartTimerOne;
-            //Screenshake for every ability use?
+
+            CameraShake.cam.Trauma += 0.08f;
 
             CanUseOne = false;
         }
@@ -64,6 +88,7 @@ public class AbilityManager : MonoBehaviour
         {
             AbilityTwo.Invoke("Ability", 0f);
             TimerTwo = StartTimerTwo;
+            CameraShake.cam.Trauma += 0.08f;
 
             CanUseTwo = false;
         }
