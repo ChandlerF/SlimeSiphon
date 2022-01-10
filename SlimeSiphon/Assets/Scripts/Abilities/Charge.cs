@@ -106,7 +106,7 @@ public class Charge : MonoBehaviour
         rb.AddForce(MoveDir * DashForce, ForceMode2D.Impulse);
 
         Invoke("EnablePlayerMovement", WaitSecToDash);
-        AudioManager.instance.Play("Charge");
+        AudioManager.instance.Play("Charge", gameObject);
     }
 
     private void EnablePlayerMovement()

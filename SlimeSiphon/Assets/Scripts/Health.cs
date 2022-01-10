@@ -132,13 +132,13 @@ public class Health : MonoBehaviour
             if (IsOnPlayer)
             {
                 CameraShake.cam.Trauma += 0.35f;
-                AudioManager.instance.Play("HitPlayer");
+                AudioManager.instance.Play("HitPlayer", gameObject);
                 FreezeFrame(0.1f);
             }
             else
             {
                 CameraShake.cam.Trauma += 0.12f;
-                AudioManager.instance.Play("HitEnemy");
+                AudioManager.instance.Play("HitEnemy", gameObject);
                 FreezeFrame(0.05f);
             }
         }
@@ -156,11 +156,11 @@ public class Health : MonoBehaviour
 
         if (IsOnPlayer)
         {
-            AudioManager.instance.Play("PlayerDeath");
+            AudioManager.instance.Play("PlayerDeath", gameObject);
         }
         else
         {
-            AudioManager.instance.Play("EnemyDeath");
+            AudioManager.instance.Play("EnemyDeath", gameObject);
         }
 
 

@@ -69,7 +69,7 @@ public class AbilityManager : MonoBehaviour
         }
 
 
-        AudioManager.instance.Play("Start");
+        AudioManager.instance.Play("Start", gameObject);
     }
 
 

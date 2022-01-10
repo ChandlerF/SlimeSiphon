@@ -57,7 +57,7 @@ public class Fireball : MonoBehaviour
 
         SpawnedFB.transform.rotation = Quaternion.LookRotation(Vector3.forward, -Dir);
 
-        AudioManager.instance.Play("ShootFireball");
+        AudioManager.instance.Play("ShootFireball", gameObject);
         SpawnedFB.GetComponent<Rigidbody2D>().AddForce(Dir * Force, ForceMode2D.Impulse);
     }
 }
