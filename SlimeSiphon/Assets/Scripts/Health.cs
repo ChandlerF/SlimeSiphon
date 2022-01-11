@@ -113,6 +113,7 @@ public class Health : MonoBehaviour
 
             SpawnedParticles.GetComponent<ParticleSystem>().startColor = particleColor;
 
+            MovementScript.Invoke("TakenDamage", 0f);
 
             if (CurrentHealth <= 0)
             {
@@ -122,7 +123,6 @@ public class Health : MonoBehaviour
 
             SetSpeed();
 
-            MovementScript.Invoke("TakenDamage", 0f);
 
             IsInvincible = true;
             Invoke("MakeMortal", 0.5f);
