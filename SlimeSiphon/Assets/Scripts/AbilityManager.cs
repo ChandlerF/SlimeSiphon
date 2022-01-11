@@ -26,12 +26,28 @@ public class AbilityManager : MonoBehaviour
 
     private Image CooldownOne, CooldownTwo;
 
+
     private void Awake()
     {
-        instance = this;
+        //If I'm the only one of myself in scene
+        if (instance == null)
+        {
+            instance = this;
+        }
+        //If I'm not the original
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(this.gameObject);
     }
 
     void Start()
+    {
+        NewStart();
+    }
+
+    private void NewStart()
     {
         TimerOne = StartTimerOne;
 
@@ -46,7 +62,7 @@ public class AbilityManager : MonoBehaviour
         CooldownTwo = transform.GetChild(1).GetChild(0).GetChild(1).gameObject.GetComponent<Image>();
 
 
-        if(AbilityOne != null)
+        if (AbilityOne != null)
         {
             Sprite img = Resources.Load("Ability" + AbilityOne.GetType().Name, typeof(Sprite)) as Sprite;
 
@@ -73,7 +89,6 @@ public class AbilityManager : MonoBehaviour
 
         AudioManager.instance.Play("Start");
     }
-
 
     void Update()
     {
@@ -306,5 +321,17 @@ public class AbilityManager : MonoBehaviour
 
         string DeadBodyAbility = DeadBodyHealth.AbilityScript.GetType().Name;
         InteractText.GetComponent<TextMeshPro>().text = "Replace " + currentAbility + " with " + DeadBodyAbility;
+    }
+
+
+
+    public void CallNewScene()
+    {
+        Invoke("NewScene", 0.5f);       //------------------------ needs to change, but will work for now
+    }
+
+    private void NewScene()
+    {
+        NewStart();
     }
 }

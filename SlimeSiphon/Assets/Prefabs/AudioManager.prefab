@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9176944643297327686
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9176944643297327680}
+  - component: {fileID: 9176944643297327681}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9176944643297327680
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9176944643297327686}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 777.5378, y: 629.31006, z: -41.86718}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9176944643297327681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9176944643297327686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e47bfc8023d6541a04fa4de9b9cf0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Start
+    clip: {fileID: 8300000, guid: 3dd1fb8e1ad0b87478d084a99e91c2db, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: Charge
+    clip: {fileID: 8300000, guid: fce93393f8aaab3409d69513659d62d3, type: 3}
+    volume: 0.35
+    pitch: 1
+    source: {fileID: 0}
+  - name: HitPlayer
+    clip: {fileID: 8300000, guid: 782011dc23b66804ea30bca65a0839fc, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: HitEnemy
+    clip: {fileID: 8300000, guid: e7bc88edfa6ed1a428c5bfbf45384e5a, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: PlayerDeath
+    clip: {fileID: 8300000, guid: 8447f2fcec349104b9feeee3cbecaf43, type: 3}
+    volume: 0.6
+    pitch: 1
+    source: {fileID: 0}
+  - name: EnemyDeath
+    clip: {fileID: 8300000, guid: a9e06894c1d0091409e32f75aec23d58, type: 3}
+    volume: 0.6
+    pitch: 1
+    source: {fileID: 0}
+  - name: ShootFireball
+    clip: {fileID: 8300000, guid: 7f93b964ea4015b4ea698aef259c14a3, type: 3}
+    volume: 0.35
+    pitch: 1
+    source: {fileID: 0}
+  - name: PickupAbility
+    clip: {fileID: 8300000, guid: 9f3bf18d57f9c19459a81471d6a2d2ee, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: PreCharge
+    clip: {fileID: 8300000, guid: 0f271e5b6cf86ca4ab5339d3ac794e6f, type: 3}
+    volume: 0.35
+    pitch: 1
+    source: {fileID: 0}
+  - name: SwappedAbilityUI
+    clip: {fileID: 8300000, guid: 67e5af81b9da9d14aa68a050edf0ef48, type: 3}
+    volume: 0.4
+    pitch: 1
+    source: {fileID: 0}
+  - name: Explosion
+    clip: {fileID: 8300000, guid: 226fbe219b675b944a4daa6ae00cac75, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+  - name: Stab
+    clip: {fileID: 8300000, guid: 636501fb18c147d46a30962b5e22c864, type: 3}
+    volume: 0.35
+    pitch: 1
+    source: {fileID: 0}
+  - name: ShootIcicle
+    clip: {fileID: 8300000, guid: a12cea8473160064f8c01c59c09b1d88, type: 3}
+    volume: 0.35
+    pitch: 1
+    source: {fileID: 0}
+  - name: HitWall
+    clip: {fileID: 8300000, guid: 5c255a50989f42046ad409feb3825859, type: 3}
+    volume: 0.35
+    pitch: 1
+    source: {fileID: 0}

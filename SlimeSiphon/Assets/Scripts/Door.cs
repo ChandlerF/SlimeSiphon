@@ -45,6 +45,8 @@ public class Door : MonoBehaviour
     {
         if(CanUseDoor && col.transform.CompareTag("Player"))
         {
+            AbilityManager.instance.transform.position = new Vector3(0, 0, 0);
+            AbilityManager.instance.CallNewScene();
             SceneManager.LoadScene("Level" + NextLevel.ToString());
         }
     }

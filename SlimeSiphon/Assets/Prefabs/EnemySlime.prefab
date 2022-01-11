@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanDamage: 0
-  Damage: 5
+  Damage: 10
   KillOnCol: 0
   IsProjectile: 0
 --- !u!58 &2148379853846648069
@@ -306,7 +306,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.12}
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 6.5
 --- !u!114 &6593640781543238559
 MonoBehaviour:
   m_ObjectHideFlags: 0

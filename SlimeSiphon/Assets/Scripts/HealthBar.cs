@@ -23,10 +23,13 @@ public class HealthBar : MonoBehaviour
         WhiteFill = transform.GetChild(0).GetComponent<Image>();
         RedFill = transform.GetChild(0).GetChild(0).GetComponent<Image>();
 
-        MaxHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().MaxHealth;
-        OldHealth = MaxHealth;
 
-        SetHealthBar(MaxHealth);
+        Health PlayerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+        MaxHealth = PlayerHealth.MaxHealth;
+        OldHealth = PlayerHealth.CurrentHealth;
+        WhiteFill.fillAmount = PlayerHealth.CurrentHealth / PlayerHealth.MaxHealth;
+
+        SetHealthBar(PlayerHealth.CurrentHealth);
     }
 
     private void Update()
