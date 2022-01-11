@@ -29,6 +29,8 @@ public class Health : MonoBehaviour
 
     private GameObject HitParticles;
 
+    private SpriteRenderer sr;
+
     //Particle, and a color to set in inspector, so it looks like bits break off the person when damaged
 
     private void Awake()
@@ -41,6 +43,7 @@ public class Health : MonoBehaviour
         CurrentHealth = MaxHealth;
         FlashColorScript = GetComponent<FlashColor>();
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
         PopupText = Resources.Load("FloatingParent", typeof(GameObject)) as GameObject;
         HitParticles = Resources.Load("HitParticles", typeof(GameObject)) as GameObject;
 
@@ -51,7 +54,7 @@ public class Health : MonoBehaviour
         }
         else
         {
-            particleColor = GetComponent<SpriteRenderer>().color;
+            particleColor = sr.color;
         }
     }
 
@@ -148,6 +151,9 @@ public class Health : MonoBehaviour
     {
         IsAlive = false;
         GetComponent<Rigidbody2D>().mass *= 6;
+
+        sr.color = new Color(sr.color.r - 0.4f, sr.color.g - 0.4f, sr.color.b - 0.4f);
+
         Destroy(MovementScript);
         AbilityScript.enabled = false;
         transform.tag = "Dead";

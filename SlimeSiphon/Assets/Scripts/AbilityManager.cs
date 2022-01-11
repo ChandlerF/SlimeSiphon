@@ -130,6 +130,7 @@ public class AbilityManager : MonoBehaviour
 
             HasOnlyOneAbility = false;
 
+            GetComponent<PlayerMovement>().CanMove = true;
             DeadBody.tag = "Untagged";              //--------------- Need to change this, so you can swap to your old ability, but not heal again
             DisableInteractive();
         }
