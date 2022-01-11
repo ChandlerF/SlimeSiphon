@@ -8707,30 +8707,9 @@ PrefabInstance:
     - target: {fileID: 2382755015747410139, guid: 9c7a1e85adcabc641af667770213045b, type: 3}
       propertyPath: AbilityTwo
       value: 
-      objectReference: {fileID: 2382755014474859845}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c7a1e85adcabc641af667770213045b, type: 3}
---- !u!1 &2382755014474859844 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2382755015747410128, guid: 9c7a1e85adcabc641af667770213045b, type: 3}
-  m_PrefabInstance: {fileID: 2382755014474859843}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2382755014474859845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2382755014474859844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14765239554d07242a31b1fa13d45182, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Force: 20
-  direction: {x: 0, y: 0, z: 0}
-  mousePos: {x: 0, y: 0, z: 0}
-  Player: {fileID: 0}
 --- !u!1001 &9176944644813053413
 PrefabInstance:
   m_ObjectHideFlags: 0
