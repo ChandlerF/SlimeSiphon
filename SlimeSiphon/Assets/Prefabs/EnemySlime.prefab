@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -546161847
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 89deb6c53241f754d9b0f2d263a23908, type: 3}
   m_Color: {r: 0.68235296, g: 0, b: 0, a: 1}
@@ -161,7 +161,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -546161847
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4822677856424f245ad06c3f81803ee6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -275,7 +275,6 @@ MonoBehaviour:
   MovementScript: {fileID: 2148379853846648068}
   AbilityScript: {fileID: 2148379853846648066}
   Delay: 2
-  HitParticles: {fileID: 7070758464511682255, guid: a6a7329c6c0672e42819a4025fada00c, type: 3}
 --- !u!114 &2148379853846648071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,6 +290,7 @@ MonoBehaviour:
   CanDamage: 0
   Damage: 5
   KillOnCol: 0
+  IsProjectile: 0
 --- !u!58 &2148379853846648069
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -306,7 +306,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.12}
   serializedVersion: 2
-  m_Radius: 7
+  m_Radius: 5
 --- !u!114 &6593640781543238559
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -168,6 +168,7 @@ public class Health : MonoBehaviour
             AudioManager.instance.Play("EnemyDeath");
         }
 
+        Door.instance.UpdateCount();
 
         CameraShake.cam.Trauma += 0.2f;
         FreezeFrame(0.1f);
