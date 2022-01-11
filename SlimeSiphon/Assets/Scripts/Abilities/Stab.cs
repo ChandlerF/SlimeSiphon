@@ -48,9 +48,15 @@ public class Stab : MonoBehaviour
 
         if (IsOnPlayer)
         {
-            SpawnedStab.GetComponent<Health>().IsOnPlayer = IsOnPlayer;
-            SpawnedStab.layer = 8;  //Player Layer
+            SpawnedStab.GetComponent<Health>().IsOnPlayer = true;
+            SpawnedStab.layer = 8;  //Player Projectiles Layer
             SpawnedStab.tag = "PlayerProjectiles";
+        }
+        else
+        {
+            SpawnedStab.GetComponent<Health>().IsOnPlayer = false;
+            SpawnedStab.layer = 9;  //Enemy Projectiles Layer
+            SpawnedStab.tag = "EnemyProjectiles";
         }
 
         SpawnedStab.transform.rotation = Quaternion.LookRotation(Vector3.forward, -Dir);

@@ -9,6 +9,7 @@ TagManager:
   - Dead
   - DeadEmpty
   - Canvas
+  - EnemyProjectiles
   layers:
   - Default
   - TransparentFX

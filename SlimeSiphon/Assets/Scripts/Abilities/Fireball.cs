@@ -50,9 +50,15 @@ public class Fireball : MonoBehaviour
 
         if (IsOnPlayer)
         {
-            SpawnedFB.GetComponent<Health>().IsOnPlayer = IsOnPlayer;
-            SpawnedFB.layer = 8;  //Player Layer
+            SpawnedFB.GetComponent<Health>().IsOnPlayer = true;
+            SpawnedFB.layer = 8;  //Player Projectiles Layer
             SpawnedFB.tag = "PlayerProjectiles";
+        }
+        else
+        {
+            SpawnedFB.GetComponent<Health>().IsOnPlayer = false;
+            SpawnedFB.layer = 9;  //Enemy Projectiles Layer
+            SpawnedFB.tag = "EnemyProjectiles";
         }
 
         SpawnedFB.transform.rotation = Quaternion.LookRotation(Vector3.forward, -Dir);

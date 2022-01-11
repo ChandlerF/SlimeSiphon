@@ -26,18 +26,18 @@ public class DamageOnCol : MonoBehaviour
     {
         if (col.transform.CompareTag(TagTarget) && CanDamage)
         {
-            if(IsProjectile && col.transform.GetComponent<DamageOnCol>() != null && col.transform.GetComponent<DamageOnCol>().IsProjectile)
-            {
-                Destroy(col.gameObject);
-                AudioManager.instance.Play("Explosion");
-            }
-
             ApplyDamage(col.gameObject);
 
             if (IsProjectile)
             {
                 Destroy(gameObject);
             }
+        }
+        else if(IsProjectile && col.transform.CompareTag(TagTarget + "Projectiles"))
+        {
+            Destroy(col.gameObject);
+            AudioManager.instance.Play("Explosion");
+            Destroy(gameObject);
         }
     }
 
