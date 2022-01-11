@@ -10,6 +10,7 @@ TagManager:
   - DeadEmpty
   - Canvas
   - EnemyProjectiles
+  - Environment
   layers:
   - Default
   - TransparentFX
@@ -47,7 +48,13 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Environment
+  - name: Floor
+    uniqueID: 1649322119
+    locked: 0
+  - name: Particles
+    uniqueID: 4124109991
+    locked: 0
+  - name: Walls
     uniqueID: 2481876995
     locked: 0
   - name: Enemy

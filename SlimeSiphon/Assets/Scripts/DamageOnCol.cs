@@ -39,6 +39,11 @@ public class DamageOnCol : MonoBehaviour
             AudioManager.instance.Play("Explosion");
             Destroy(gameObject);
         }
+        else if (IsProjectile && col.transform.CompareTag("Environment"))
+        {
+            AudioManager.instance.Play("HitWall");
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D col)
