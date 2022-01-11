@@ -2056,7 +2056,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanDamage: 0
   Damage: 10
-  KillOnCol: 0
+  IsProjectile: 0
 --- !u!81 &1290378654
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2839,11 +2839,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7095007908933400338, guid: 9268e6e77ad2fa74aa6a049846b7c4aa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.51
+      value: -47.15
       objectReference: {fileID: 0}
     - target: {fileID: 7095007908933400338, guid: 9268e6e77ad2fa74aa6a049846b7c4aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.949999
+      value: 18.38
       objectReference: {fileID: 0}
     - target: {fileID: 7095007908933400338, guid: 9268e6e77ad2fa74aa6a049846b7c4aa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2957,6 +2957,11 @@ MonoBehaviour:
   - name: SwappedAbilityUI
     clip: {fileID: 8300000, guid: 67e5af81b9da9d14aa68a050edf0ef48, type: 3}
     volume: 0.4
+    pitch: 1
+    source: {fileID: 0}
+  - name: Explosion
+    clip: {fileID: 8300000, guid: 226fbe219b675b944a4daa6ae00cac75, type: 3}
+    volume: 0.3
     pitch: 1
     source: {fileID: 0}
 --- !u!4 &2124965797

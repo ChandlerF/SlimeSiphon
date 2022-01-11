@@ -12,7 +12,7 @@ public class DamageOnCol : MonoBehaviour
     [SerializeField] private float Damage = 10f;
     private string TagTarget;
 
-    [SerializeField] private bool KillOnCol = false;
+    public bool IsProjectile = false;
 
     void Start()
     {   
@@ -26,12 +26,17 @@ public class DamageOnCol : MonoBehaviour
     {
         if (col.transform.CompareTag(TagTarget) && CanDamage)
         {
+            if(IsProjectile && col.transform.GetComponent<DamageOnCol>() != null && col.transform.GetComponent<DamageOnCol>().IsProjectile)
+            {
+                Destroy(col.gameObject);
+                AudioManager.instance.Play("Explosion");
+            }
+
             ApplyDamage(col.gameObject);
 
-            if (KillOnCol)
+            if (IsProjectile)
             {
                 Destroy(gameObject);
-                //GetComponent<Health>().Death();
             }
         }
     }

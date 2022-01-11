@@ -155,8 +155,9 @@ MonoBehaviour:
   IsInvincible: 1
   IsOnPlayer: 0
   IsAlive: 1
-  MovementScript: {fileID: 0}
-  AbilityScript: {fileID: 0}
+  MovementScript: {fileID: 4223431891412979304}
+  AbilityScript: {fileID: 4223431891412979304}
+  Delay: 0
 --- !u!114 &4223431891412979304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,6 +173,7 @@ MonoBehaviour:
   CanDamage: 1
   Damage: 5
   KillOnCol: 1
+  IsProjectile: 1
 --- !u!114 &4324636366688159367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,6 +199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc5dea0c0dcbc86429020cd873a4a049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RedDuration: 0.2
-  WhiteDuration: 0.2
-  GreenDuration: 0.2
+  RedDuration: 0
+  WhiteDuration: 0
+  GreenDuration: 0
