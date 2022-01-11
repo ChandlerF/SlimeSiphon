@@ -104,4 +104,16 @@ public class Wizard : MonoBehaviour
             Aggro = true;
         }
     }
+    private void OnTriggerStay2D(Collider2D col)
+    {
+        if (Aggro == true && col.CompareTag("Enemy"))
+        {
+            col.GetComponent<Health>().BecomeAggro();
+        }
+    }
+    public void BecomeAggro()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+        Aggro = true;
+    }
 }

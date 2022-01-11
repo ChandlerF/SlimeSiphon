@@ -211,4 +211,10 @@ public class Health : MonoBehaviour
         yield return new WaitForSecondsRealtime(dur);
         Time.timeScale = 1f;
     }
+
+
+    public void BecomeAggro()
+    {
+        MovementScript.Invoke("BecomeAggro", 0f);
+    }
 }

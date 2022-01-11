@@ -103,6 +103,18 @@ public class EnemySlime : MonoBehaviour
             state = State.Aggro;
         }
     }
+    private void OnTriggerStay2D(Collider2D col)
+    {
+        if (state == State.Aggro && col.CompareTag("Enemy"))
+        {
+            col.GetComponent<Health>().BecomeAggro();
+        }
+    }
+    public void BecomeAggro()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+        state = State.Aggro;
+    }
 
     private void Retreat()
     {
