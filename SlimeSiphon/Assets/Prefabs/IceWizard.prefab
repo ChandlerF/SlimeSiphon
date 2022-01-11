@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc8930c0c2341784cb306b22ee3f2c59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 20
+  MaxHealth: 40
   CurrentHealth: 0
   KnockBackForce: 75
   StartMoveSpeed: 160

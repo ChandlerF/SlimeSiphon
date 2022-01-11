@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class AbilityManager : MonoBehaviour
@@ -161,6 +162,11 @@ public class AbilityManager : MonoBehaviour
             {
                 ChangeInteractText();
             }
+        }
+
+        else if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene("Menu");
         }
 
 

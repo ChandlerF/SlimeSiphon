@@ -97,9 +97,12 @@ public class Charge : MonoBehaviour
 
     private void UnFreezePos()
     {
-        ColScript.CanDamage = true;
+        if(GetComponent<Health>().CurrentHealth > 0)        //------------------
+        {
+            ColScript.CanDamage = true;
 
-        Dash();
+            Dash();
+        }
     }
 
     private void Dash()
