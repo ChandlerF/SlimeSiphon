@@ -11,7 +11,7 @@ public class DamageOnCol : MonoBehaviour
 
     [SerializeField] private float Damage = 10f;
     private string TagTarget;
-
+    [SerializeField] private bool KillOnCol = false;
     public bool IsProjectile = false;
 
     void Start()
@@ -28,7 +28,7 @@ public class DamageOnCol : MonoBehaviour
         {
             ApplyDamage(col.gameObject);
 
-            if (IsProjectile)
+            if (KillOnCol)
             {
                 Destroy(gameObject);
             }
@@ -38,6 +38,24 @@ public class DamageOnCol : MonoBehaviour
             Destroy(col.gameObject);
             AudioManager.instance.Play("Explosion");
             Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (IsProjectile && !col.isTrigger || IsProjectile && col.transform.CompareTag(TagTarget + "Projectiles"))
+        {
+            if (col.transform.CompareTag(TagTarget) && CanDamage)
+            {
+                ApplyDamage(col.gameObject);
+
+            }
+            else if (col.transform.CompareTag(TagTarget + "Projectiles"))
+            {
+                Destroy(col.gameObject);
+                AudioManager.instance.Play("Explosion");
+                Destroy(gameObject);
+            }
         }
     }
 
