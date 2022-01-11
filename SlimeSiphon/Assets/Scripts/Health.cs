@@ -154,10 +154,10 @@ public class Health : MonoBehaviour
 
         sr.color = new Color(sr.color.r - 0.4f, sr.color.g - 0.4f, sr.color.b - 0.4f);
 
-        Destroy(MovementScript);
-        AbilityScript.enabled = false;
         transform.tag = "Dead";
         gameObject.layer = 11;  //"Dead" Layer
+
+        Destroy(MovementScript);
 
         if (IsOnPlayer)
         {
@@ -166,6 +166,7 @@ public class Health : MonoBehaviour
         else
         {
             AudioManager.instance.Play("EnemyDeath");
+            AbilityScript.enabled = false;
         }
 
         Door.instance.UpdateCount();

@@ -93,7 +93,7 @@ public class AbilityManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && CanUseOne)
+        if (Input.GetMouseButtonDown(0) && CanUseOne && GetComponent<Health>().CurrentHealth > 0)
         {
             AbilityOne.Invoke("Ability", 0f);
             TimerOne = StartTimerOne;
@@ -105,7 +105,7 @@ public class AbilityManager : MonoBehaviour
 
 
 
-        else if (Input.GetMouseButtonDown(1) && CanUseTwo && !HasOnlyOneAbility)
+        else if (Input.GetMouseButtonDown(1) && CanUseTwo && !HasOnlyOneAbility && GetComponent<Health>().CurrentHealth > 0)
         {
             AbilityTwo.Invoke("Ability", 0f);
             TimerTwo = StartTimerTwo;
