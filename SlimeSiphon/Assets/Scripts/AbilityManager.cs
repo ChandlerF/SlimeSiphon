@@ -166,6 +166,7 @@ public class AbilityManager : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.R))
         {
+            Destroy(gameObject);
             SceneManager.LoadScene("Menu");
         }
 

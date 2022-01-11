@@ -9,6 +9,8 @@ public class ToLevelOne : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.U))
         {
+            AbilityManager.instance.transform.position = new Vector3(0, 0, 0);
+            AbilityManager.instance.CallNewScene();
             SceneManager.LoadScene("Level1");
         }
     }

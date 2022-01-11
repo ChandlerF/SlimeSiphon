@@ -20,6 +20,10 @@ public class HealthBar : MonoBehaviour
 
     void Start()
     {
+        Invoke("NewStart", 0.5f);
+    }
+    private void NewStart()
+    {
         WhiteFill = transform.GetChild(0).GetComponent<Image>();
         RedFill = transform.GetChild(0).GetChild(0).GetComponent<Image>();
 
