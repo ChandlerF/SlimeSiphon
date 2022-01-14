@@ -170,6 +170,12 @@ public class AbilityManager : MonoBehaviour
             SceneManager.LoadScene("Menu");
         }
 
+        else if (Input.GetKeyDown(KeyCode.L))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            GetComponent<Health>().Revive();
+        }
+
 
 
         if (TimerOne > 0 && CanUseOne == false)
@@ -328,17 +334,5 @@ public class AbilityManager : MonoBehaviour
 
         string DeadBodyAbility = DeadBodyHealth.AbilityScript.GetType().Name;
         InteractText.GetComponent<TextMeshPro>().text = "Replace " + currentAbility + " with " + DeadBodyAbility;
-    }
-
-
-
-    public void CallNewScene()
-    {
-        Invoke("NewScene", 0.5f);       //------------------------ needs to change, but will work for now
-    }
-
-    private void NewScene()
-    {
-        NewStart();
     }
 }

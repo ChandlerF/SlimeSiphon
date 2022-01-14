@@ -58,14 +58,14 @@ public class PlayerMovement : MonoBehaviour
     {
         MoveSpeed = GetComponent<Health>().MoveSpeed;
 
-        HealthBar.instance.SetHealthBar(GetComponent<Health>().CurrentHealth);
+        transform.GetChild(2).GetChild(1).GetComponent<HealthBar>().SetHealthBar(GetComponent<Health>().CurrentHealth);
     }
 
     public void Healed()
     {
         MoveSpeed = GetComponent<Health>().MoveSpeed;
 
-        HealthBar.instance.SetHealthBar(GetComponent<Health>().CurrentHealth);
+        transform.GetChild(2).GetChild(1).GetComponent<HealthBar>().SetHealthBar(GetComponent<Health>().CurrentHealth);
     }
 
 

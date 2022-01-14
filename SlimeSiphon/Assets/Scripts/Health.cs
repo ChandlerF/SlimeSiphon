@@ -31,7 +31,12 @@ public class Health : MonoBehaviour
 
     private SpriteRenderer sr;
 
-    //Particle, and a color to set in inspector, so it looks like bits break off the person when damaged
+    [SerializeField] private Sprite DeadSprite;
+    private string OriginalTag;
+    private int OriginalLayer;
+    private float OriginalMass;
+    private Sprite OriginalSprite;
+
 
     private void Awake()
     {
@@ -56,6 +61,12 @@ public class Health : MonoBehaviour
         {
             particleColor = sr.color;
         }
+
+
+        OriginalTag = transform.tag;
+        OriginalLayer = gameObject.layer;
+        OriginalSprite = sr.sprite;
+        OriginalMass = rb.mass;
     }
 
     public void Heal(float hp)
@@ -152,12 +163,12 @@ public class Health : MonoBehaviour
         IsAlive = false;
         GetComponent<Rigidbody2D>().mass *= 6;
 
-        sr.color = new Color(sr.color.r - 0.4f, sr.color.g - 0.4f, sr.color.b - 0.4f);
+        sr.color = new Color(sr.color.r - 0.3f, sr.color.g - 0.3f, sr.color.b - 0.3f);
 
         transform.tag = "Dead";
         gameObject.layer = 11;  //"Dead" Layer
 
-        Destroy(MovementScript);
+        MovementScript.enabled = false;
 
         if (IsOnPlayer)
         {
@@ -167,12 +178,43 @@ public class Health : MonoBehaviour
         {
             AudioManager.instance.Play("EnemyDeath");
             AbilityScript.enabled = false;
+            sr.sprite = DeadSprite;
+            transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
         }
 
         Door.instance.UpdateCount();
 
         CameraShake.cam.Trauma += 0.2f;
         FreezeFrame(0.1f);
+    }
+
+    public void Revive()
+    {
+        IsAlive = true;
+        GetComponent<Rigidbody2D>().mass = OriginalMass;
+
+        sr.color = new Color(sr.color.r + 0.3f, sr.color.g + 0.3f, sr.color.b + 0.3f);
+
+        transform.tag = OriginalTag;
+        gameObject.layer = OriginalLayer;
+
+        MovementScript.enabled = true;
+        AbilityScript.enabled = true;
+
+        sr.sprite = OriginalSprite;
+
+        FreezeFrame(0.2f);
+        Door.instance.UpdateCount();
+
+
+        if (IsOnPlayer)
+        {
+            transform.position = Vector3.zero;
+        }
+        MoveSpeed = StartMoveSpeed;
+        MovementScript.Invoke("Healed", 0f);
+        CurrentHealth = MaxHealth;
+
     }
 
 

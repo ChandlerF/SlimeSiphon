@@ -275,6 +275,7 @@ MonoBehaviour:
   MovementScript: {fileID: 2148379853846648068}
   AbilityScript: {fileID: 2148379853846648066}
   Delay: 2
+  DeadSprite: {fileID: 21300000, guid: 2262e6f71ccf7cb409e92551f1ea6601, type: 3}
 --- !u!114 &2148379853846648071
 MonoBehaviour:
   m_ObjectHideFlags: 0

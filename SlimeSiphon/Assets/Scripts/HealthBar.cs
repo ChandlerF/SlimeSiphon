@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    public static HealthBar instance;
     private Image RedFill, WhiteFill;
 
     private float OldHealth, MaxHealth, NewFill, NewHealth;
@@ -13,14 +12,10 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private float LerpTime;
 
 
-    private void Awake()
-    {
-        instance = this;
-    }
 
     void Start()
     {
-        Invoke("NewStart", 0.5f);
+        Invoke("NewStart", 0f);
     }
     private void NewStart()
     {
